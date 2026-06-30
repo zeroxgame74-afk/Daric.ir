@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daric · قالب‌های حرفه‌ای</title>
+  
+  <!-- فونت وزیر (Vazir) از CDN -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+  
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0e14;
+      font-family: 'Vazir', 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      color: #e8f0f8;
+      line-height: 1.6;
+    }
+
+    /* کانتینر اصلی با ترکیب رنگ‌های B61C1C (قرمز تیره) و E3B10A (طلایی) */
+    .daric-card {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(16, 24, 32, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 2px solid rgba(227, 177, 10, 0.35);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(227, 177, 10, 0.12);
+      border-radius: 3.5rem;
+      padding: 2.8rem 3.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    /* هدر Daric با رنگ‌های جدید */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(227, 177, 10, 0.2);
+      padding-bottom: 1.6rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #E3B10A, #B61C1C);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: #0b0e14;
+      box-shadow: 0 0 30px rgba(227, 177, 10, 0.4);
+      transform: rotate(4deg);
+      transition: 0.25s;
+      text-decoration: none;
+    }
+
+    .logo-icon:hover {
+      transform: rotate(0deg) scale(1.06);
+      box-shadow: 0 0 50px rgba(227, 177, 10, 0.7);
+    }
+
+    .logo-text {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to left, #E3B10A, #B61C1C, #E3B10A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .nav a {
+      color: #c8dae8;
+      text-decoration: none;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav a i {
+      font-size: 0.9rem;
+      color: #E3B10A;
+    }
+
+    .nav a:hover {
+      color: #E3B10A;
+      border-bottom-color: #E3B10A;
+      text-shadow: 0 0 12px rgba(227, 177, 10, 0.5);
+    }
+
+    /* بخش اصلی با گرید */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: 3.6rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #E3B10A, #B61C1C, #E3B10A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      text-shadow: 0 0 40px rgba(227, 177, 10, 0.2);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #b8d0de;
+      max-width: 90%;
+      margin-top: 1.2rem;
+      line-height: 1.9;
+      border-right: 3px solid #E3B10A;
+      padding-right: 1.4rem;
+    }
+
+    .cta-group {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #E3B10A, #B61C1C);
+      color: #fff;
+      font-weight: 800;
+      padding: 0.95rem 2.6rem;
+      border-radius: 60px;
+      border: none;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 0 30px rgba(227, 177, 10, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Vazir', sans-serif;
+      text-decoration: none;
+    }
+
+    .btn-primary i {
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(227, 177, 10, 0.6);
+      background: linear-gradient(135deg, #f5c422, #c41f1f);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.8px solid rgba(227, 177, 10, 0.5);
+      color: #e8f0f8;
+      font-weight: 700;
+      padding: 0.95rem 2.6rem;
+      border-radius: 60px;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Vazir', sans-serif;
+      text-decoration: none;
+    }
+
+    .btn-outline i {
+      color: #E3B10A;
+    }
+
+    .btn-outline:hover {
+      background: rgba(227, 177, 10, 0.12);
+      border-color: #E3B10A;
+      box-shadow: 0 0 35px rgba(227, 177, 10, 0.2);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      background: rgba(227, 177, 10, 0.04);
+      border-radius: 2.2rem;
+      padding: 2rem 1.6rem;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(227, 177, 10, 0.08);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(to bottom, #E3B10A, #B61C1C);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: #aac2d6;
+      letter-spacing: 0.3px;
+    }
+
+    /* کارت‌های ویژه Daric */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2.8rem 0 1.2rem;
+    }
+
+    .feature-card {
+      background: rgba(22, 34, 46, 0.6);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(227, 177, 10, 0.12);
+      border-radius: 2.4rem;
+      padding: 2rem 1.8rem;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(227, 177, 10, 0.6);
+      box-shadow: 0 18px 45px rgba(227, 177, 10, 0.15);
+      background: rgba(227, 177, 10, 0.04);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      color: #E3B10A;
+      filter: drop-shadow(0 0 12px rgba(227, 177, 10, 0.3));
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: #e0edf8;
+    }
+
+    .feature-card p {
+      color: #aac2d6;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    /* فوتر Daric */
+    .footer {
+      margin-top: 3.8rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(227, 177, 10, 0.12);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      color: #7a96af;
+      font-size: 0.95rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .footer-social a {
+      color: #b0cada;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .footer-social a i {
+      color: #E3B10A;
+      font-size: 1rem;
+    }
+
+    .footer-social a:hover {
+      color: #E3B10A;
+      border-bottom-color: #E3B10A;
+    }
+
+    /* ریسپانسیو کامل */
+    @media (max-width: 850px) {
+      .daric-card {
+        padding: 2rem 1.8rem;
+        border-radius: 2.8rem;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+      }
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      .hero-desc {
+        max-width: 100%;
+      }
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        align-items: start;
+        gap: 1.2rem;
+      }
+      .nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.95rem;
+      }
+      .features {
+        grid-template-columns: 1fr;
+      }
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .btn-primary, .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+      .footer {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: start;
+      }
+      .logo-text {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="daric-card">
+    <!-- هدر Daric -->
+    <header class="header">
+      <div class="logo">
+        <a href="#" class="logo-icon">D</a>
+        <a href="#" class="logo-text">Daric</a>
+      </div>
+      <nav class="nav">
+        <a href="#"><i class="fas fa-home"></i> خانه</a>
+        <a href="daric-ghaleb.html"><i class="fas fa-layer-group"></i> قالب‌ها</a>
+        <a href="#"><i class="fas fa-code"></i> توسعه</a>
+        <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
+      </nav>
+    </header>
+
+    <!-- محتوای اصلی -->
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">
+          <span>Daric</span>؛ ساخت، توسعه<br>و فروش قالب‌های <span>حرفه‌ای</span>
+        </h1>
+        <p class="hero-desc">
+          پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و 
+          بهینه‌شده برای کسب‌وکارهای خلاق. با Daric، ایده‌های خود را به محصولی درخشان تبدیل کنید.
+        </p>
+        <div class="cta-group">
+          <a href="#" class="btn-primary">
+            <i class="fas fa-rocket"></i> شروع فروش
+          </a>
+          <a href="#" class="btn-outline">
+            <i class="fas fa-eye"></i> مشاهده دمو
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">۱۲۰+</span>
+          <span class="stat-label">قالب فعال</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">۹۷%</span>
+          <span class="stat-label">رضایت مشتری</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">۴.۸⭐</span>
+          <span class="stat-label">میانگین امتیاز</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">۸.۵K</span>
+          <span class="stat-label">توسعه‌دهنده</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- کارت‌های ویژگی با لینک‌های جداگانه -->
+    <div class="features">
+      <a href="daric-design.html" class="feature-card">
+        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>طراحی مدرن</h3>
+        <p>قالب‌هایی با هویت بصری منحصربه‌فرد، آماده برای هر نوع برند و استارتاپ.</p>
+      </a>
+      <a href="daric-code.html" class="feature-card">
+        <div class="feature-icon"><i class="fas fa-code"></i></div>
+        <h3>کد تمیز</h3>
+        <p>توسعه‌یافته با بهترین استانداردها، سبک، سریع و کاملاً قابل شخصی‌سازی.</p>
+      </a>
+      <a href="daric-shop.html" class="feature-card">
+        <div class="feature-icon"><i class="fas fa-cart-plus"></i></div>
+        <h3>فروش آسان</h3>
+        <p>سیستم پرداخت یکپارچه، پنل کاربری حرفه‌ای و پشتیبانی ۲۴/۷ برای فروشندگان.</p>
+      </a>
+    </div>
+
+    <!-- فوتر Daric -->
+    <div class="footer">
+      <span><i class="far fa-copyright"></i> ۲۰۲۶ · Daric — همه حقوق محفوظ است</span>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-twitter"></i> توییتر</a>
+        <a href="#"><i class="fab fa-github"></i> گیت‌هاب</a>
+        <a href="#"><i class="fab fa-discord"></i> دیسکورد</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
