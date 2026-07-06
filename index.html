@@ -13,11 +13,8 @@
             font-family: 'Vazir', sans-serif;
             color: #eef5ff;
             padding: 1rem;
-            animation: fadeIn 0.8s ease-in;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            height: 100vh;
+            overflow: hidden;
         }
         .container {
             max-width: 1200px;
@@ -27,7 +24,12 @@
             border-radius: 2rem;
             padding: 2rem;
             border: 1px solid rgba(0, 255, 136, 0.15);
+            height: calc(100vh - 2rem);
+            display: flex;
+            flex-direction: column;
         }
+
+        /* ===== HEADER ===== */
         .header {
             display: flex;
             justify-content: space-between;
@@ -37,6 +39,7 @@
             margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 1rem;
+            flex-shrink: 0;
         }
         .logo {
             display: flex;
@@ -58,11 +61,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
-            100% { text-shadow: 0 0 20px rgba(255, 221, 0, 0.4); }
         }
         .nav {
             display: flex;
@@ -75,52 +73,41 @@
             transition: all 0.3s;
             font-size: 1rem;
             cursor: pointer;
-            position: relative;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
         }
         .nav a i { color: #ffdd00; margin-left: 0.3rem; }
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, #00ff88, #ffdd00);
-            transition: width 0.3s;
-        }
-        .nav a:hover { color: #ffdd00; }
-        .nav a:hover::after { width: 100%; }
+        .nav a:hover { color: #ffdd00; border-bottom-color: #ffdd00; }
+        .nav a.active { color: #ffdd00; border-bottom-color: #ffdd00; }
 
-        .section { margin-bottom: 3rem; }
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            animation: slideDown 0.6s ease-out;
+        /* ===== صفحات ===== */
+        .page {
+            display: none;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-in-out;
+            overflow-y: auto;
+            padding: 1rem 0;
         }
-        @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .page.active {
+            display: flex;
         }
-        .section-title span {
-            background: linear-gradient(135deg, #00ff88, #ffdd00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
-        /* خانه */
+        /* ===== صفحه خانه ===== */
+        #home-page {
+            flex-direction: column;
+        }
         .hero-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 2rem;
+            width: 100%;
             align-items: center;
-            animation: slideUp 0.8s ease-out;
-        }
-        @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
         }
         .hero-title {
             font-size: 3.2rem;
@@ -132,12 +119,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
         }
         .hero-desc {
             color: #b8d0de;
@@ -164,11 +145,10 @@
             cursor: pointer;
             font-family: 'Vazir', sans-serif;
             transition: all 0.3s;
-            animation: bounceIn 0.8s;
         }
         .btn-primary i { margin-left: 0.5rem; }
         .btn-primary:hover {
-            transform: scale(1.05) translateY(-3px);
+            transform: scale(1.05);
             box-shadow: 0 0 40px rgba(255, 221, 0, 0.4);
         }
         .btn-outline {
@@ -188,7 +168,6 @@
             background: rgba(255, 221, 0, 0.15);
             border-color: #ffdd00;
             transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(255, 221, 0, 0.2);
         }
         .hero-stats {
             display: grid;
@@ -207,20 +186,15 @@
             background-clip: text;
             color: transparent;
             display: block;
-            animation: countUp 1.5s ease-out;
-        }
-        @keyframes countUp {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
         }
         .stat-label { color: #aac2d6; font-size: 0.95rem; }
 
-        /* ویژگی‌ها */
         .features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 2rem;
+            width: 100%;
         }
         .feature-card {
             background: rgba(22, 34, 46, 0.6);
@@ -228,46 +202,40 @@
             border-radius: 1.5rem;
             padding: 2rem 1.5rem;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: cardFade 0.6s ease-out;
-        }
-        @keyframes cardFade {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
+            transition: all 0.3s;
         }
         .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-5px);
             border-color: #ffdd00;
-            box-shadow: 0 15px 40px rgba(255, 221, 0, 0.15);
         }
-        .feature-icon {
-            font-size: 3rem;
-            color: #ffdd00;
-            margin-bottom: 1rem;
-            transition: transform 0.5s;
-            display: inline-block;
-        }
-        .feature-card:hover .feature-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
-        .feature-card h3 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        .feature-card p {
-            color: #aac2d6;
-            font-size: 0.95rem;
-        }
+        .feature-icon { font-size: 3rem; color: #ffdd00; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .feature-card p { color: #aac2d6; font-size: 0.95rem; }
 
-        /* قالب‌ها (کاملاً جدا) */
-        #templates {
-            scroll-margin-top: 2rem;
+        /* ===== صفحه قالب‌ها ===== */
+        #templates-page {
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .section-title span {
+            background: linear-gradient(135deg, #00ff88, #ffdd00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         .template-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
+            width: 100%;
+            overflow-y: auto;
+            padding-bottom: 1rem;
         }
         .template-card {
             background: rgba(22, 34, 46, 0.7);
@@ -275,33 +243,15 @@
             border-radius: 1.5rem;
             padding: 1.8rem 1.5rem;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: cardFade 0.8s ease-out;
+            transition: all 0.3s;
         }
         .template-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-5px);
             border-color: #ffdd00;
-            box-shadow: 0 15px 40px rgba(255, 221, 0, 0.15);
         }
-        .template-card .icon {
-            font-size: 3.5rem;
-            color: #ffdd00;
-            margin-bottom: 0.8rem;
-            transition: transform 0.5s;
-            display: inline-block;
-        }
-        .template-card:hover .icon {
-            transform: rotate(5deg) scale(1.1);
-        }
-        .template-card h3 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.3rem;
-        }
-        .template-card p {
-            color: #aac2d6;
-            font-size: 0.95rem;
-        }
+        .template-card .icon { font-size: 3.5rem; color: #ffdd00; margin-bottom: 0.8rem; }
+        .template-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.3rem; }
+        .template-card p { color: #aac2d6; font-size: 0.95rem; }
         .template-card .price {
             display: inline-block;
             margin-top: 0.8rem;
@@ -311,10 +261,6 @@
             padding: 0.3rem 1.5rem;
             border-radius: 40px;
             font-size: 1.1rem;
-            transition: transform 0.3s;
-        }
-        .template-card:hover .price {
-            transform: scale(1.05);
         }
         .template-card .btn-demo {
             margin-top: 1rem;
@@ -331,44 +277,38 @@
         .template-card .btn-demo:hover {
             background: rgba(255, 221, 0, 0.15);
             border-color: #ffdd00;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 221, 0, 0.15);
         }
 
-        /* فوتر */
+        /* ===== فوتر ===== */
         .footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 2px solid rgba(0, 255, 136, 0.1);
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
             color: #7a96af;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            flex-shrink: 0;
         }
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
+        .footer-social { display: flex; gap: 1.5rem; }
         .footer-social a {
             color: #b0cada;
             text-decoration: none;
             transition: all 0.3s;
         }
         .footer-social a i { color: #ffdd00; margin-left: 0.3rem; }
-        .footer-social a:hover {
-            color: #ffdd00;
-            transform: translateY(-3px);
-        }
+        .footer-social a:hover { color: #ffdd00; }
 
-        /* ریسپانسیو */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
             .hero-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.8rem; }
             .features { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
+            .container { padding: 1rem; height: calc(100vh - 1rem); }
             .header { flex-direction: column; align-items: start; gap: 1rem; }
             .nav { flex-wrap: wrap; gap: 1rem; }
             .features { grid-template-columns: 1fr; }
@@ -386,15 +326,15 @@
                 <span class="logo-text">داریس</span>
             </div>
             <nav class="nav">
-                <a href="#"><i class="fas fa-home"></i> خانه</a>
-                <a href="#templates"><i class="fas fa-layer-group"></i> قالب‌ها</a>
+                <a class="active" data-page="home"><i class="fas fa-home"></i> خانه</a>
+                <a data-page="templates"><i class="fas fa-layer-group"></i> قالب‌ها</a>
                 <a><i class="fas fa-code"></i> توسعه</a>
                 <a><i class="fas fa-headset"></i> پشتیبانی</a>
             </nav>
         </header>
 
-        <!-- خانه (بدون قالب) -->
-        <section class="section">
+        <!-- ===== صفحه خانه ===== -->
+        <section id="home-page" class="page active">
             <div class="hero-grid">
                 <div>
                     <h1 class="hero-title"><span>داریس</span>؛ توسعه و فروش قالــب سایت</h1>
@@ -430,10 +370,11 @@
             </div>
         </section>
 
-        <!-- قالب‌ها (کاملاً جدا) -->
-        <section id="templates" class="section">
+        <!-- ===== صفحه قالب‌ها ===== -->
+        <section id="templates-page" class="page">
             <h2 class="section-title"><span>قالب‌های</span> داریس</h2>
             <div class="template-grid">
+                <!-- ۱۲ کارت قالب -->
                 <div class="template-card">
                     <div class="icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>قالب مدیریتی</h3>
@@ -531,5 +472,36 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav a[data-page]');
+        const pages = {
+            home: document.getElementById('home-page'),
+            templates: document.getElementById('templates-page')
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const pageId = this.dataset.page;
+                if (!pageId) return;
+
+                // فعال کردن لینک
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                // تغییر صفحه با انیمیشن
+                Object.values(pages).forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // نمایش صفحه جدید با کمی تأخیر برای انیمیشن
+                setTimeout(() => {
+                    if (pages[pageId]) {
+                        pages[pageId].classList.add('active');
+                    }
+                }, 50);
+            });
+        });
+    </script>
 </body>
 </html>
