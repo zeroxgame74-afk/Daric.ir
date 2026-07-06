@@ -3,14 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>داریس | فروشگاه قالب</title>
-
-  <!-- فونت وزیر (Vazir) از CDN -->
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
-
-  <!-- Font Awesome 6 (رایگان) -->
+  <title>داریس | خانه</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
   <style>
     * {
       margin: 0;
@@ -20,34 +15,38 @@
 
     body {
       background: #0c0f15;
-      font-family: 'Vazir', 'Segoe UI', sans-serif;
-      min-height: 100vh;
-      padding: 1.5rem;
+      font-family: 'Vazir', sans-serif;
+      height: 100vh;
+      overflow: hidden;
       color: #eef5ff;
     }
 
-    /* ---------- Card اصلی ---------- */
     .daric-card {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(18, 26, 34, 0.65);
+      width: 100%;
+      height: 100vh;
+      background: rgba(18, 26, 34, 0.85);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 2px solid rgba(0, 255, 136, 0.3);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 221, 0, 0.1);
-      border-radius: 3.5rem;
-      padding: 2.8rem 3.2rem;
+      padding: 2rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
     }
 
     /* ---------- Header ---------- */
     .header {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2.8rem;
-      border-bottom: 1px solid rgba(0, 255, 136, 0.15);
-      padding-bottom: 1.6rem;
+      margin-bottom: 3rem;
+      border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+      padding-bottom: 1.5rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 4rem;
+      z-index: 10;
     }
 
     .logo {
@@ -57,19 +56,12 @@
     }
 
     .logo img {
-      height: 70px;
-      width: auto;
+      height: 75px;
       border-radius: 16px;
-      transition: 0.3s;
-    }
-
-    .logo img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
     }
 
     .logo-text {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 900;
       background: linear-gradient(to left, #00ff88, #ffdd00, #00ff88);
       -webkit-background-clip: text;
@@ -79,72 +71,86 @@
 
     .nav {
       display: flex;
-      gap: 2.2rem;
+      gap: 2.5rem;
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
 
     .nav a {
       color: #c8dae8;
       text-decoration: none;
-      padding: 0.3rem 0;
-      border-bottom: 2px solid transparent;
+      padding: 0.4rem 0;
+      border-bottom: 3px solid transparent;
       transition: 0.2s;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       cursor: pointer;
     }
 
     .nav a i {
-      font-size: 0.9rem;
       color: #ffdd00;
     }
 
-    .nav a:hover {
+    .nav a:hover,
+    .nav a.active {
       color: #ffdd00;
       border-bottom-color: #ffdd00;
-      text-shadow: 0 0 12px rgba(255, 221, 0, 0.5);
     }
 
-    /* ---------- بخش خانه (Hero) ---------- */
+    /* ---------- صفحات (خانه و قالب‌ها) ---------- */
+    .page {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    /* ---------- صفحه خانه ---------- */
+    #home {
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 2.8rem;
-      margin-bottom: 3rem;
+      gap: 3rem;
+      width: 100%;
+      align-items: center;
     }
 
     .hero-title {
-      font-size: 3.6rem;
+      font-size: 4rem;
       font-weight: 900;
-      line-height: 1.3;
-      letter-spacing: -1px;
+      line-height: 1.2;
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #00ff88, #ffdd00, #00ff88);
+      background: linear-gradient(135deg, #00ff88, #ffdd00);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      display: inline-block;
-      text-shadow: 0 0 40px rgba(0, 255, 136, 0.2);
     }
 
     .hero-desc {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #b8d0de;
-      max-width: 90%;
-      margin-top: 1.2rem;
-      line-height: 1.9;
-      border-right: 3px solid #ffdd00;
-      padding-right: 1.4rem;
+      border-right: 4px solid #ffdd00;
+      padding-right: 1.5rem;
+      margin-top: 1rem;
+      line-height: 2;
     }
 
     .cta-group {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       display: flex;
-      flex-wrap: wrap;
       gap: 1.2rem;
     }
 
@@ -152,40 +158,33 @@
       background: linear-gradient(135deg, #00ff88, #ffdd00);
       color: #0c0f15;
       font-weight: 800;
-      padding: 0.95rem 2.6rem;
+      padding: 1rem 3rem;
       border-radius: 60px;
       border: none;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: 0.25s;
-      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
       display: inline-flex;
       align-items: center;
       gap: 0.7rem;
       font-family: 'Vazir', sans-serif;
     }
 
-    .btn-primary i {
-      font-size: 1.1rem;
-    }
-
     .btn-primary:hover {
       transform: scale(1.05);
       box-shadow: 0 0 60px rgba(255, 221, 0, 0.5);
-      background: linear-gradient(135deg, #66ffaa, #ffea33);
     }
 
     .btn-outline {
       background: transparent;
-      border: 1.8px solid rgba(255, 221, 0, 0.5);
+      border: 2px solid rgba(255, 221, 0, 0.5);
       color: #e8f0f8;
       font-weight: 700;
-      padding: 0.95rem 2.6rem;
+      padding: 1rem 3rem;
       border-radius: 60px;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: 0.2s;
-      backdrop-filter: blur(4px);
       display: inline-flex;
       align-items: center;
       gap: 0.7rem;
@@ -199,18 +198,15 @@
     .btn-outline:hover {
       background: rgba(255, 221, 0, 0.1);
       border-color: #ffdd00;
-      box-shadow: 0 0 35px rgba(255, 221, 0, 0.2);
     }
 
-    /* ---------- آمار ---------- */
     .hero-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.6rem;
+      gap: 1.8rem;
       background: rgba(0, 255, 136, 0.04);
-      border-radius: 2.2rem;
-      padding: 2rem 1.6rem;
-      backdrop-filter: blur(4px);
+      border-radius: 2.5rem;
+      padding: 2.2rem 2rem;
       border: 1px solid rgba(255, 221, 0, 0.08);
     }
 
@@ -219,82 +215,71 @@
     }
 
     .stat-number {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 900;
       background: linear-gradient(to bottom, #ffdd00, #00ff88);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       display: block;
-      line-height: 1.2;
     }
 
     .stat-label {
-      font-size: 0.95rem;
       color: #aac2d6;
-      letter-spacing: 0.3px;
+      font-size: 1rem;
     }
 
-    /* ---------- سه کارت ویژگی ---------- */
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin: 2.8rem 0 3.5rem;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      width: 100%;
     }
 
     .feature-card {
       background: rgba(22, 34, 46, 0.6);
-      backdrop-filter: blur(4px);
       border: 1px solid rgba(0, 255, 136, 0.12);
-      border-radius: 2.4rem;
-      padding: 2rem 1.8rem;
-      transition: 0.3s ease;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2rem;
       text-align: center;
-      cursor: default;
+      transition: 0.3s;
     }
 
     .feature-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(255, 221, 0, 0.6);
-      box-shadow: 0 18px 45px rgba(255, 221, 0, 0.15);
-      background: rgba(255, 221, 0, 0.04);
+      border-color: #ffdd00;
     }
 
     .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: inline-block;
+      font-size: 3.5rem;
       color: #ffdd00;
-      filter: drop-shadow(0 0 12px rgba(255, 221, 0, 0.3));
+      margin-bottom: 1rem;
     }
 
     .feature-card h3 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      margin-bottom: 0.6rem;
       color: #e0edf8;
     }
 
     .feature-card p {
       color: #aac2d6;
-      font-size: 0.98rem;
-      line-height: 1.7;
+      font-size: 1rem;
     }
 
-    /* ---------- بخش قالب‌ها (با آیدی جدا) ---------- */
-    #templates-section {
-      scroll-margin-top: 2rem;
+    /* ---------- صفحه قالب‌ها ---------- */
+    #templates {
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 800;
       text-align: center;
-      margin: 3rem 0 2rem;
-      padding-top: 1rem;
-      border-top: 2px solid rgba(0, 255, 136, 0.15);
+      margin-bottom: 2.5rem;
     }
 
     .section-title span {
@@ -307,126 +292,131 @@
     .template-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
+      gap: 2.5rem;
+      width: 100%;
     }
 
     .template-card {
       background: rgba(22, 34, 46, 0.7);
-      backdrop-filter: blur(4px);
       border: 1px solid rgba(0, 255, 136, 0.15);
-      border-radius: 2rem;
-      padding: 1.8rem 1.5rem;
+      border-radius: 2.5rem;
+      padding: 2rem 1.8rem;
       text-align: center;
-      transition: 0.3s ease;
+      transition: 0.3s;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
 
     .template-card:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-8px);
       border-color: #ffdd00;
-      box-shadow: 0 18px 45px rgba(255, 221, 0, 0.2);
-      background: rgba(0, 255, 136, 0.05);
+      box-shadow: 0 18px 45px rgba(255, 221, 0, 0.15);
     }
 
     .template-card .icon {
-      font-size: 3.8rem;
+      font-size: 4rem;
       color: #ffdd00;
-      margin-bottom: 0.8rem;
-      filter: drop-shadow(0 0 20px rgba(255, 221, 0, 0.2));
+      margin-bottom: 1rem;
     }
 
     .template-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: #e0edf8;
-      margin-bottom: 0.3rem;
     }
 
     .template-card p {
       color: #aac2d6;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 1rem;
     }
 
     .template-card .price {
       display: inline-block;
-      margin-top: 0.8rem;
+      margin-top: 1rem;
       background: linear-gradient(135deg, #00ff88, #ffdd00);
       color: #0c0f15;
       font-weight: 800;
-      padding: 0.3rem 1.8rem;
+      padding: 0.4rem 2rem;
       border-radius: 40px;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     .template-card .btn-demo {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       background: transparent;
-      border: 1.5px solid rgba(255, 221, 0, 0.4);
+      border: 2px solid rgba(255, 221, 0, 0.4);
       color: #e8f0f8;
       font-weight: 700;
-      padding: 0.5rem 2rem;
+      padding: 0.6rem 2.5rem;
       border-radius: 60px;
       cursor: pointer;
       transition: 0.2s;
       font-family: 'Vazir', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .template-card .btn-demo:hover {
       background: rgba(255, 221, 0, 0.15);
       border-color: #ffdd00;
-      box-shadow: 0 0 30px rgba(255, 221, 0, 0.15);
     }
 
     /* ---------- فوتر ---------- */
     .footer {
-      margin-top: 3.8rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(0, 255, 136, 0.12);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 4rem;
+      border-top: 2px solid rgba(0, 255, 136, 0.12);
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       align-items: center;
       color: #7a96af;
-      font-size: 0.95rem;
+      background: rgba(18, 26, 34, 0.85);
+      backdrop-filter: blur(8px);
     }
 
     .footer-social {
       display: flex;
-      gap: 1.8rem;
+      gap: 2rem;
     }
 
     .footer-social a {
       color: #b0cada;
       text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      border-bottom: 1px dotted transparent;
-      cursor: pointer;
+      gap: 0.5rem;
+      transition: 0.2s;
     }
 
     .footer-social a i {
       color: #ffdd00;
-      font-size: 1rem;
     }
 
     .footer-social a:hover {
       color: #ffdd00;
-      border-bottom-color: #ffdd00;
     }
 
     /* ---------- ریسپانسیو ---------- */
-    @media (max-width: 850px) {
-      .daric-card {
-        padding: 2rem 1.5rem;
-        border-radius: 2.5rem;
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
+      .hero-title {
+        font-size: 3rem;
+      }
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+      .daric-card {
+        padding: 1.5rem 2rem;
+      }
+      .header {
+        padding: 1rem 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
       .header {
         flex-direction: column;
         align-items: start;
@@ -434,46 +424,18 @@
       }
       .nav {
         flex-wrap: wrap;
-        gap: 1.2rem;
-      }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      .hero-desc {
-        max-width: 100%;
       }
       .features {
-        grid-template-columns: 1fr 1fr;
-      }
-      .template-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .features {
-        grid-template-columns: 1fr;
-      }
-      .template-grid {
         grid-template-columns: 1fr;
       }
       .footer {
         flex-direction: column;
         gap: 1rem;
         align-items: start;
+        padding: 1rem 2rem;
       }
-      .logo-text {
-        font-size: 1.8rem;
-      }
-      .logo img {
-        height: 55px;
-      }
-      .section-title {
-        font-size: 2rem;
+      .template-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -484,58 +446,35 @@
     <!-- ===== HEADER ===== -->
     <header class="header">
       <div class="logo">
-        <img src="https://uploadkon.ir/uploads/571e06_26DARIC-IR.png" alt="لوگو داریس" />
+        <img src="https://uploadkon.ir/uploads/571e06_26DARIC-IR.png" alt="لوگو" />
         <span class="logo-text">داریس</span>
       </div>
       <nav class="nav">
-        <a href="#home-section"><i class="fas fa-home"></i> خانه</a>
-        <a href="#templates-section"><i class="fas fa-layer-group"></i> قالب‌ها</a>
+        <a class="active" data-page="home"><i class="fas fa-home"></i> خانه</a>
+        <a data-page="templates"><i class="fas fa-layer-group"></i> قالب‌ها</a>
         <a><i class="fas fa-code"></i> توسعه</a>
         <a><i class="fas fa-headset"></i> پشتیبانی</a>
       </nav>
     </header>
 
-    <!-- ===== بخش خانه ===== -->
-    <section id="home-section">
+    <!-- ===== صفحه خانه ===== -->
+    <section id="home" class="page active">
       <div class="hero-grid">
         <div>
-          <h1 class="hero-title">
-            <span>داریس</span>؛ توسعه و فروش<br>قالــب <span>سایت</span>
-          </h1>
-          <p class="hero-desc">
-            پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و
-            بهینه‌شده برای کسب‌وکارهای خلاق. با داریس، ایده‌های خود را به محصولی درخشان تبدیل کنید.
-          </p>
+          <h1 class="hero-title"><span>داریس</span>؛ توسعه و فروش قالــب سایت</h1>
+          <p class="hero-desc">پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و بهینه‌شده برای کسب‌وکارهای خلاق.</p>
           <div class="cta-group">
-            <button class="btn-primary">
-              <i class="fas fa-rocket"></i> شروع فروش
-            </button>
-            <button class="btn-outline">
-              <i class="fas fa-eye"></i> مشاهده دمو
-            </button>
+            <button class="btn-primary"><i class="fas fa-rocket"></i> شروع فروش</button>
+            <button class="btn-outline"><i class="fas fa-eye"></i> مشاهده دمو</button>
           </div>
         </div>
         <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">۱۲۰+</span>
-            <span class="stat-label">قالب فعال</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">۹۷%</span>
-            <span class="stat-label">رضایت مشتری</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">۴.۸⭐</span>
-            <span class="stat-label">میانگین امتیاز</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">۸.۵K</span>
-            <span class="stat-label">توسعه‌دهنده</span>
-          </div>
+          <div class="stat-item"><span class="stat-number">۱۲۰+</span><span class="stat-label">قالب فعال</span></div>
+          <div class="stat-item"><span class="stat-number">۹۷%</span><span class="stat-label">رضایت مشتری</span></div>
+          <div class="stat-item"><span class="stat-number">۴.۸⭐</span><span class="stat-label">میانگین امتیاز</span></div>
+          <div class="stat-item"><span class="stat-number">۸.۵K</span><span class="stat-label">توسعه‌دهنده</span></div>
         </div>
       </div>
-
-      <!-- ===== سه کارت ویژگی ===== -->
       <div class="features">
         <div class="feature-card">
           <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
@@ -555,130 +494,93 @@
       </div>
     </section>
 
-    <!-- ===== بخش قالب‌ها ===== -->
-    <section id="templates-section">
-      <h2 class="section-title">
-        <span>قالب‌های</span> داریس
-      </h2>
-
+    <!-- ===== صفحه قالب‌ها ===== -->
+    <section id="templates" class="page">
+      <h2 class="section-title"><span>قالب‌های</span> داریس</h2>
       <div class="template-grid">
-        <!-- کارت ۱ -->
+        <!-- ۱۲ کارت قالب (همون کارت‌های قبلی) -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-laptop-code"></i></div>
           <h3>قالب مدیریتی</h3>
-          <p>داشبورد حرفه‌ای با طراحی مدرن و رنگ‌بندی سفارشی</p>
-          <span class="price">۱,۲۰۰,۰۰۰ تومان</span>
-          <br />
+          <p>داشبورد حرفه‌ای با طراحی مدرن</p>
+          <span class="price">۱,۲۰۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۲ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-store"></i></div>
           <h3>قالب فروشگاهی</h3>
-          <p>فروشگاه اینترنتی کامل با سیستم پرداخت و مدیریت محصول</p>
-          <span class="price">۹۸۰,۰۰۰ تومان</span>
-          <br />
+          <p>فروشگاه اینترنتی کامل با سیستم پرداخت</p>
+          <span class="price">۹۸۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۳ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-blog"></i></div>
           <h3>قالب وبلاگ</h3>
-          <p>وبلاگ شخصی و خبری با چیدمان جذاب و بهینه برای سئو</p>
-          <span class="price">۶۵۰,۰۰۰ تومان</span>
-          <br />
+          <p>وبلاگ شخصی و خبری با چیدمان جذاب</p>
+          <span class="price">۶۵۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۴ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-photo-video"></i></div>
           <h3>قالب پرتفولیو</h3>
-          <p>نمایش نمونه‌کارها و پروژه‌های هنری با افکت‌های خاص</p>
-          <span class="price">۷۵۰,۰۰۰ تومان</span>
-          <br />
+          <p>نمایش نمونه‌کارهای هنری با افکت‌های خاص</p>
+          <span class="price">۷۵۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۵ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-graduation-cap"></i></div>
           <h3>قالب آموزشی</h3>
-          <p>سیستم مدیریت دوره‌های آنلاین با پنل مدرس و دانشجو</p>
-          <span class="price">۱,۵۰۰,۰۰۰ تومان</span>
-          <br />
+          <p>سیستم مدیریت دوره‌های آنلاین</p>
+          <span class="price">۱,۵۰۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۶ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-rocket"></i></div>
           <h3>قالب استارتاپی</h3>
-          <p>صفحه فرود و معرفی محصول برای استارتاپ‌های تکنولوژی</p>
-          <span class="price">۸۲۰,۰۰۰ تومان</span>
-          <br />
+          <p>صفحه فرود و معرفی محصول برای استارتاپ‌ها</p>
+          <span class="price">۸۲۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۷ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-heartbeat"></i></div>
           <h3>قالب پزشکی</h3>
-          <p>سایت کلینیک و مطب با سیستم نوبت‌دهی آنلاین</p>
-          <span class="price">۱,۱۰۰,۰۰۰ تومان</span>
-          <br />
+          <p>سایت کلینیک و مطب با سیستم نوبت‌دهی</p>
+          <span class="price">۱,۱۰۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۸ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-utensils"></i></div>
           <h3>قالب رستوران</h3>
-          <p>منوی دیجیتال، رزرو میز و سیستم سفارش آنلاین</p>
-          <span class="price">۹۵۰,۰۰۰ تومان</span>
-          <br />
+          <p>منوی دیجیتال، رزرو میز و سفارش آنلاین</p>
+          <span class="price">۹۵۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۹ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-futbol"></i></div>
           <h3>قالب ورزشی</h3>
-          <p>باشگاه ورزشی، کلاس‌ها و سیستم ثبت‌نام آنلاین</p>
-          <span class="price">۸۵۰,۰۰۰ تومان</span>
-          <br />
+          <p>باشگاه ورزشی، کلاس‌ها و ثبت‌نام آنلاین</p>
+          <span class="price">۸۵۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۱۰ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-hotel"></i></div>
           <h3>قالب هتل</h3>
-          <p>سیستم رزرواسیون هتل با نمایش اتاق‌ها و امکانات</p>
-          <span class="price">۱,۳۰۰,۰۰۰ تومان</span>
-          <br />
+          <p>سیستم رزرواسیون هتل با نمایش اتاق‌ها</p>
+          <span class="price">۱,۳۰۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۱۱ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
           <h3>قالب خیریه</h3>
-          <p>سایت جمع‌آوری کمک‌های مردمی با سیستم پرداخت امن</p>
-          <span class="price">۷۰۰,۰۰۰ تومان</span>
-          <br />
+          <p>جمع‌آوری کمک‌های مردمی با پرداخت امن</p>
+          <span class="price">۷۰۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
-
-        <!-- کارت ۱۲ -->
         <div class="template-card">
           <div class="icon"><i class="fas fa-newspaper"></i></div>
           <h3>قالب خبری</h3>
-          <p>پرتال خبری با دسته‌بندی و نمایش داغ‌ترین اخبار</p>
-          <span class="price">۹۰۰,۰۰۰ تومان</span>
-          <br />
+          <p>پرتال خبری با دسته‌بندی و اخبار داغ</p>
+          <span class="price">۹۰۰,۰۰۰ تومان</span><br />
           <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
         </div>
       </div>
@@ -694,6 +596,34 @@
       </div>
     </footer>
   </div>
+
+  <!-- ===== جاوااسکریپت برای سوئیچ صفحات ===== -->
+  <script>
+    const navLinks = document.querySelectorAll('.nav a[data-page]');
+    const pages = {
+      home: document.getElementById('home'),
+      templates: document.getElementById('templates')
+    };
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const pageId = this.dataset.page;
+        if (!pageId) return;
+
+        // حذف کلاس active از همه لینک‌ها
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+
+        // مخفی کردن همه صفحات
+        Object.values(pages).forEach(page => page.classList.remove('active'));
+
+        // نمایش صفحه مورد نظر
+        if (pages[pageId]) {
+          pages[pageId].classList.add('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
