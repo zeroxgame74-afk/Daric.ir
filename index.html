@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DARIC.IR | SHOP</title>
+    <title>DARIC.IR | تب‌های کامل</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
@@ -16,34 +16,32 @@
             background: #0a0a0f;
             font-family: 'Vazir', sans-serif;
             color: #eef5ff;
-            padding: 1rem;
-            height: 100vh;
-            overflow: hidden;
+            padding: 1.5rem;
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             background: rgba(18, 26, 34, 0.8);
             backdrop-filter: blur(8px);
             border-radius: 2rem;
             padding: 2rem;
             border: 1px solid rgba(0, 255, 136, 0.15);
-            height: calc(100vh - 2rem);
-            display: flex;
-            flex-direction: column;
         }
-
-        /* ===== HEADER ===== */
+        /* هدر */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 1.2rem;
             border-bottom: 2px solid rgba(0, 255, 136, 0.1);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 1rem;
-            flex-shrink: 0;
         }
         .logo {
             display: flex;
@@ -65,235 +63,114 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
         }
-        .nav {
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
+            100% { text-shadow: 0 0 20px rgba(255, 221, 0, 0.4); }
+        }
+        /* ناوبری تب */
+        .tabs-nav {
             display: flex;
             gap: 1.8rem;
             font-weight: 600;
+            flex-wrap: wrap;
         }
-        .nav a {
+        .tab-btn {
+            background: transparent;
+            border: none;
             color: #c8dae8;
-            text-decoration: none;
-            transition: all 0.3s;
             font-size: 1rem;
+            font-family: 'Vazir', sans-serif;
             cursor: pointer;
-            padding: 0.3rem 0;
-            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            padding: 0.5rem 0.2rem;
+            position: relative;
+            font-weight: 600;
         }
-        .nav a i {
+        .tab-btn i {
             color: #ffdd00;
             margin-left: 0.3rem;
         }
-        .nav a:hover,
-        .nav a.active {
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #00ff88, #ffdd00);
+            transition: width 0.3s;
+        }
+        .tab-btn:hover {
             color: #ffdd00;
-            border-bottom-color: #ffdd00;
         }
-
-        /* ===== PAGES ===== */
-        .page {
-            display: none;
-            flex: 1;
-            align-items: center;
-            justify-content: center;
-            overflow-y: auto;
-            padding: 1rem 0;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .page.active {
-            display: flex;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* ===== HOME PAGE ===== */
-        #home-page {
-            flex-direction: column;
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
+        .tab-btn:hover::after {
             width: 100%;
-            align-items: center;
         }
-        .hero-title {
-            font-size: 3.2rem;
-            font-weight: 900;
-            line-height: 1.2;
-        }
-        .hero-title span {
-            background: linear-gradient(135deg, #00ff88, #ffdd00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero-desc {
-            color: #b8d0de;
-            font-size: 1.1rem;
-            border-right: 3px solid #ffdd00;
-            padding-right: 1.2rem;
-            margin-top: 1rem;
-            line-height: 1.8;
-        }
-        .cta-group {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #00ff88, #ffdd00);
-            color: #0c0f15;
-            font-weight: 800;
-            padding: 0.8rem 2.2rem;
-            border-radius: 60px;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            font-family: 'Vazir', sans-serif;
-            transition: all 0.3s;
-        }
-        .btn-primary i {
-            margin-left: 0.5rem;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(255, 221, 0, 0.4);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid rgba(255, 221, 0, 0.4);
-            color: #e8f0f8;
-            font-weight: 700;
-            padding: 0.8rem 2.2rem;
-            border-radius: 60px;
-            font-size: 1rem;
-            cursor: pointer;
-            font-family: 'Vazir', sans-serif;
-            transition: all 0.3s;
-        }
-        .btn-outline i {
-            margin-left: 0.5rem;
+        .tab-btn.active {
             color: #ffdd00;
         }
-        .btn-outline:hover {
-            background: rgba(255, 221, 0, 0.15);
-            border-color: #ffdd00;
-            transform: translateY(-3px);
+        .tab-btn.active::after {
+            width: 100%;
         }
-        .hero-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            background: rgba(0, 255, 136, 0.04);
-            border-radius: 1.5rem;
-            padding: 1.8rem;
+
+        /* محتوای تب‌ها */
+        .tab-content {
+            margin-top: 2rem;
         }
-        .stat-item {
-            text-align: center;
+        .tab-pane {
+            display: none;
+            animation: slideUp 0.5s ease-out;
         }
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(to bottom, #ffdd00, #00ff88);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .tab-pane.active {
             display: block;
         }
-        .stat-label {
-            color: #aac2d6;
-            font-size: 0.95rem;
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        .features {
+
+        /* کارت‌ها و گریدها */
+        .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
-            width: 100%;
         }
-        .feature-card {
-            background: rgba(22, 34, 46, 0.6);
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            border-radius: 1.5rem;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #ffdd00;
-        }
-        .feature-icon {
-            font-size: 3rem;
-            color: #ffdd00;
-            margin-bottom: 1rem;
-        }
-        .feature-card h3 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        .feature-card p {
-            color: #aac2d6;
-            font-size: 0.95rem;
-        }
-
-        /* ===== TEMPLATES PAGE ===== */
-        #templates-page {
-            flex-direction: column;
-        }
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        .section-title span {
-            background: linear-gradient(135deg, #00ff88, #ffdd00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .template-grid {
+        .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            width: 100%;
-            overflow-y: auto;
-            padding-bottom: 1rem;
         }
-        .template-card {
+        .card {
             background: rgba(22, 34, 46, 0.7);
             border: 1px solid rgba(0, 255, 136, 0.1);
             border-radius: 1.5rem;
             padding: 1.8rem 1.5rem;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .template-card:hover {
-            transform: translateY(-5px);
+        .card:hover {
+            transform: translateY(-8px);
             border-color: #ffdd00;
+            box-shadow: 0 15px 40px rgba(255, 221, 0, 0.15);
         }
-        .template-card .icon {
-            font-size: 3.5rem;
+        .card .icon {
+            font-size: 3rem;
             color: #ffdd00;
             margin-bottom: 0.8rem;
+            display: inline-block;
         }
-        .template-card h3 {
+        .card h3 {
             font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 0.3rem;
         }
-        .template-card p {
+        .card p {
             color: #aac2d6;
             font-size: 0.95rem;
         }
-        .template-card .price {
+        .card .badge {
             display: inline-block;
             margin-top: 0.8rem;
             background: linear-gradient(135deg, #00ff88, #ffdd00);
@@ -301,113 +178,65 @@
             font-weight: 800;
             padding: 0.3rem 1.5rem;
             border-radius: 40px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
-        .template-card .btn-demo {
+        .btn-ghost {
             margin-top: 1rem;
             background: transparent;
             border: 2px solid rgba(255, 221, 0, 0.3);
             color: #e8f0f8;
-            padding: 0.5rem 2rem;
+            padding: 0.4rem 1.8rem;
             border-radius: 60px;
             cursor: pointer;
             font-family: 'Vazir', sans-serif;
             transition: all 0.3s;
         }
-        .template-card .btn-demo i {
+        .btn-ghost i {
             margin-left: 0.3rem;
+            color: #ffdd00;
         }
-        .template-card .btn-demo:hover {
+        .btn-ghost:hover {
             background: rgba(255, 221, 0, 0.15);
             border-color: #ffdd00;
+            transform: scale(1.05);
         }
 
-        /* ===== DEVELOPMENT PAGE ===== */
-        #dev-page {
-            flex-direction: column;
-            text-align: center;
-        }
-        #dev-page .dev-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        #dev-page .dev-content i {
-            font-size: 4rem;
-            color: #ffdd00;
-            margin-bottom: 1.5rem;
-        }
-        #dev-page .dev-content h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        #dev-page .dev-content p {
-            color: #b8d0de;
-            font-size: 1.1rem;
-            line-height: 2;
-        }
-
-        /* ===== SUPPORT PAGE ===== */
-        #support-page {
-            flex-direction: column;
-            text-align: center;
-        }
-        #support-page .support-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        #support-page .support-content i {
-            font-size: 4rem;
-            color: #ffdd00;
-            margin-bottom: 1.5rem;
-        }
-        #support-page .support-content h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        #support-page .support-content p {
-            color: #b8d0de;
-            font-size: 1.1rem;
-            line-height: 2;
-        }
-        .contact-info {
-            margin-top: 2rem;
+        /* بخش توسعه (تب) */
+        .dev-stack {
             display: flex;
-            gap: 2rem;
             flex-wrap: wrap;
+            gap: 1.5rem;
             justify-content: center;
+            margin: 1.5rem 0;
         }
-        .contact-info .item {
-            background: rgba(22, 34, 46, 0.6);
-            padding: 1.5rem 2rem;
-            border-radius: 1.5rem;
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            min-width: 200px;
-        }
-        .contact-info .item i {
-            font-size: 2rem;
-            color: #ffdd00;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        .contact-info .item span {
-            font-size: 1rem;
-            color: #aac2d6;
+        .dev-stack span {
+            background: rgba(0, 255, 136, 0.08);
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            font-weight: 700;
         }
 
-        /* ===== FOOTER ===== */
+        /* پشتیبانی (تب) */
+        .support-item {
+            background: rgba(22, 34, 46, 0.5);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-right: 4px solid #ffdd00;
+            margin-bottom: 1rem;
+        }
+
+        /* فوتر */
         .footer {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
             border-top: 2px solid rgba(0, 255, 136, 0.1);
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
             color: #7a96af;
-            font-size: 0.9rem;
-            flex-shrink: 0;
+            font-size: 0.95rem;
         }
         .footer-social {
             display: flex;
@@ -424,228 +253,142 @@
         }
         .footer-social a:hover {
             color: #ffdd00;
+            transform: translateY(-3px);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ریسپانسیو */
         @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            .features {
+            .grid-3 {
                 grid-template-columns: 1fr 1fr;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
             }
         }
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-                height: calc(100vh - 1rem);
-            }
             .header {
                 flex-direction: column;
                 align-items: start;
                 gap: 1rem;
             }
-            .nav {
-                flex-wrap: wrap;
+            .tabs-nav {
                 gap: 1rem;
             }
-            .features {
-                grid-template-columns: 1fr;
-            }
-            .template-grid {
+            .grid-3 {
                 grid-template-columns: 1fr;
             }
             .footer {
                 flex-direction: column;
                 align-items: start;
             }
-            .contact-info {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- ===== HEADER ===== -->
+        <!-- هدر -->
         <header class="header">
             <div class="logo">
                 <img src="https://uploadkon.ir/uploads/571e06_26DARIC-IR.png" alt="لوگو" />
                 <span class="logo-text">داریس</span>
             </div>
-            <nav class="nav">
-                <a class="active" data-page="home"><i class="fas fa-home"></i> خانه</a>
-                <a data-page="templates"><i class="fas fa-layer-group"></i> قالب‌ها</a>
-                <a data-page="dev"><i class="fas fa-code"></i> توسعه</a>
-                <a data-page="support"><i class="fas fa-headset"></i> پشتیبانی</a>
+            <nav class="tabs-nav" id="tabsNav">
+                <button class="tab-btn active" data-tab="home"><i class="fas fa-home"></i> خانه</button>
+                <button class="tab-btn" data-tab="templates"><i class="fas fa-layer-group"></i> قالب‌ها</button>
+                <button class="tab-btn" data-tab="dev"><i class="fas fa-code"></i> توسعه</button>
+                <button class="tab-btn" data-tab="support"><i class="fas fa-headset"></i> پشتیبانی</button>
             </nav>
         </header>
 
-        <!-- ===== PAGE: HOME ===== -->
-        <section id="home-page" class="page active">
-            <div class="hero-grid">
-                <div>
-                    <h1 class="hero-title"><span>داریس</span>؛ توسعه و فروش قالــب سایت</h1>
-                    <p class="hero-desc">پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و بهینه‌شده برای کسب‌وکارهای خلاق.</p>
-                    <div class="cta-group">
-                        <button class="btn-primary"><i class="fas fa-rocket"></i> شروع فروش</button>
-                        <button class="btn-outline"><i class="fas fa-eye"></i> مشاهده دمو</button>
+        <!-- محتوای تب‌ها -->
+        <div class="tab-content">
+
+            <!-- خانه -->
+            <div class="tab-pane active" id="home">
+                <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:2rem; align-items:center; margin-bottom:2rem;">
+                    <div>
+                        <h1 style="font-size:2.8rem; font-weight:900; line-height:1.2;"><span style="background:linear-gradient(135deg,#00ff88,#ffdd00); -webkit-background-clip:text; background-clip:text; color:transparent;">داریس</span>؛ توسعه و فروش قالب</h1>
+                        <p style="color:#b8d0de; border-right:3px solid #ffdd00; padding-right:1.2rem; margin-top:1rem; line-height:1.8;">پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و بهینه‌شده برای کسب‌وکارهای خلاق.</p>
+                        <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                            <button class="btn-ghost" style="background:linear-gradient(135deg,#00ff88,#ffdd00); color:#0c0f15; font-weight:800; padding:0.8rem 2.2rem; border:none; border-radius:60px;"><i class="fas fa-rocket"></i> شروع فروش</button>
+                            <button class="btn-ghost"><i class="fas fa-eye"></i> مشاهده دمو</button>
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; background:rgba(0,255,136,0.04); border-radius:1.5rem; padding:1.8rem;">
+                        <div style="text-align:center;"><span style="font-size:2.8rem; font-weight:900; background:linear-gradient(to bottom,#ffdd00,#00ff88); -webkit-background-clip:text; background-clip:text; color:transparent; display:block;">۱۲۰+</span><span style="color:#aac2d6;">قالب فعال</span></div>
+                        <div style="text-align:center;"><span style="font-size:2.8rem; font-weight:900; background:linear-gradient(to bottom,#ffdd00,#00ff88); -webkit-background-clip:text; background-clip:text; color:transparent; display:block;">۹۷%</span><span style="color:#aac2d6;">رضایت مشتری</span></div>
+                        <div style="text-align:center;"><span style="font-size:2.8rem; font-weight:900; background:linear-gradient(to bottom,#ffdd00,#00ff88); -webkit-background-clip:text; background-clip:text; color:transparent; display:block;">۴.۸⭐</span><span style="color:#aac2d6;">میانگین امتیاز</span></div>
+                        <div style="text-align:center;"><span style="font-size:2.8rem; font-weight:900; background:linear-gradient(to bottom,#ffdd00,#00ff88); -webkit-background-clip:text; background-clip:text; color:transparent; display:block;">۸.۵K</span><span style="color:#aac2d6;">توسعه‌دهنده</span></div>
                     </div>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item"><span class="stat-number">۱۲۰+</span><span class="stat-label">قالب فعال</span></div>
-                    <div class="stat-item"><span class="stat-number">۹۷%</span><span class="stat-label">رضایت مشتری</span></div>
-                    <div class="stat-item"><span class="stat-number">۴.۸⭐</span><span class="stat-label">میانگین امتیاز</span></div>
-                    <div class="stat-item"><span class="stat-number">۸.۵K</span><span class="stat-label">توسعه‌دهنده</span></div>
+                <div class="grid-3">
+                    <div class="card"><div class="icon"><i class="fas fa-paint-brush"></i></div><h3>طراحی مدرن</h3><p>قالب‌هایی با هویت بصری منحصربه‌فرد</p></div>
+                    <div class="card"><div class="icon"><i class="fas fa-code"></i></div><h3>کد تمیز</h3><p>توسعه‌یافته با بهترین استانداردها</p></div>
+                    <div class="card"><div class="icon"><i class="fas fa-cart-plus"></i></div><h3>فروش آسان</h3><p>سیستم پرداخت یکپارچه و پنل حرفه‌ای</p></div>
                 </div>
             </div>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>طراحی مدرن</h3>
-                    <p>قالب‌هایی با هویت بصری منحصربه‌فرد، آماده برای هر نوع برند و استارتاپ.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-code"></i></div>
-                    <h3>کد تمیز</h3>
-                    <p>توسعه‌یافته با بهترین استانداردها، سبک، سریع و کاملاً قابل شخصی‌سازی.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-cart-plus"></i></div>
-                    <h3>فروش آسان</h3>
-                    <p>سیستم پرداخت یکپارچه، پنل کاربری حرفه‌ای و پشتیبانی ۲۴/۷ برای فروشندگان.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- ===== PAGE: TEMPLATES ===== -->
-        <section id="templates-page" class="page">
-            <h2 class="section-title"><span>قالب‌های</span> داریس</h2>
-            <div class="template-grid">
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>قالب مدیریتی</h3>
-                    <p>داشبورد حرفه‌ای با طراحی مدرن</p>
-                    <span class="price">۱,۲۰۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-store"></i></div>
-                    <h3>قالب فروشگاهی</h3>
-                    <p>فروشگاه اینترنتی کامل با سیستم پرداخت</p>
-                    <span class="price">۹۸۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-blog"></i></div>
-                    <h3>قالب وبلاگ</h3>
-                    <p>وبلاگ شخصی و خبری با چیدمان جذاب</p>
-                    <span class="price">۶۵۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-photo-video"></i></div>
-                    <h3>قالب پرتفولیو</h3>
-                    <p>نمایش نمونه‌کارهای هنری با افکت‌های خاص</p>
-                    <span class="price">۷۵۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>قالب آموزشی</h3>
-                    <p>سیستم مدیریت دوره‌های آنلاین</p>
-                    <span class="price">۱,۵۰۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-rocket"></i></div>
-                    <h3>قالب استارتاپی</h3>
-                    <p>صفحه فرود و معرفی محصول برای استارتاپ‌ها</p>
-                    <span class="price">۸۲۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                    <h3>قالب پزشکی</h3>
-                    <p>سایت کلینیک و مطب با سیستم نوبت‌دهی</p>
-                    <span class="price">۱,۱۰۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-utensils"></i></div>
-                    <h3>قالب رستوران</h3>
-                    <p>منوی دیجیتال، رزرو میز و سفارش آنلاین</p>
-                    <span class="price">۹۵۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-futbol"></i></div>
-                    <h3>قالب ورزشی</h3>
-                    <p>باشگاه ورزشی، کلاس‌ها و ثبت‌نام آنلاین</p>
-                    <span class="price">۸۵۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-hotel"></i></div>
-                    <h3>قالب هتل</h3>
-                    <p>سیستم رزرواسیون هتل با نمایش اتاق‌ها</p>
-                    <span class="price">۱,۳۰۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3>قالب خیریه</h3>
-                    <p>جمع‌آوری کمک‌های مردمی با پرداخت امن</p>
-                    <span class="price">۷۰۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                </div>
-                <div class="template-card">
-                    <div class="icon"><i class="fas fa-newspaper"></i></div>
-                    <h3>قالب خبری</h3>
-                    <p>پرتال خبری با دسته‌بندی و اخبار داغ</p>
-                    <span class="price">۹۰۰,۰۰۰ تومان</span><br />
-                    <button class="btn-demo"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+            <!-- قالب‌ها -->
+            <div class="tab-pane" id="templates">
+                <h2 style="font-size:2rem; font-weight:800; text-align:center; margin-bottom:1.5rem;"><span style="background:linear-gradient(135deg,#00ff88,#ffdd00); -webkit-background-clip:text; background-clip:text; color:transparent;">قالب‌های</span> داریس</h2>
+                <div class="grid-3">
+                    <div class="card"><div class="icon"><i class="fas fa-laptop-code"></i></div><h3>مدیریتی</h3><p>داشبورد حرفه‌ای</p><span class="badge">۱,۲۰۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-store"></i></div><h3>فروشگاهی</h3><p>فروشگاه اینترنتی کامل</p><span class="badge">۹۸۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-blog"></i></div><h3>وبلاگ</h3><p>وبلاگ شخصی و خبری</p><span class="badge">۶۵۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-photo-video"></i></div><h3>پرتفولیو</h3><p>نمایش نمونه‌کارهای هنری</p><span class="badge">۷۵۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h3>آموزشی</h3><p>مدیریت دوره‌های آنلاین</p><span class="badge">۱,۵۰۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-rocket"></i></div><h3>استارتاپی</h3><p>صفحه فرود و معرفی محصول</p><span class="badge">۸۲۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-heartbeat"></i></div><h3>پزشکی</h3><p>سایت کلینیک با نوبت‌دهی</p><span class="badge">۱,۱۰۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-utensils"></i></div><h3>رستوران</h3><p>منوی دیجیتال و رزرو</p><span class="badge">۹۵۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
+                    <div class="card"><div class="icon"><i class="fas fa-futbol"></i></div><h3>ورزشی</h3><p>باشگاه و کلاس‌های آنلاین</p><span class="badge">۸۵۰,۰۰۰ تومان</span><br><button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button></div>
                 </div>
             </div>
-        </section>
 
-        <!-- ===== PAGE: DEVELOPMENT ===== -->
-        <section id="dev-page" class="page">
-            <div class="dev-content">
-                <i class="fas fa-code"></i>
-                <h2>توسعه‌ی حرفه‌ای</h2>
-                <p>ما در داریس، تیمی از توسعه‌دهندگان حرفه‌ای هستیم که با استفاده از جدیدترین تکنولوژی‌ها، قالب‌هایی با کد تمیز، بهینه و مقیاس‌پذیر تولید می‌کنیم. از طراحی تا پیاده‌سازی، همه چیز با استانداردهای روز دنیا انجام میشه.</p>
-                <p style="margin-top: 1rem;">تکنولوژی‌های مورد استفاده: <span style="color: #ffdd00;">HTML5, CSS3, JavaScript, React, Vue, PHP, Laravel</span></p>
+            <!-- توسعه -->
+            <div class="tab-pane" id="dev">
+                <h2 style="font-size:2rem; font-weight:800; text-align:center;"><span style="background:linear-gradient(135deg,#00ff88,#ffdd00); -webkit-background-clip:text; background-clip:text; color:transparent;">توسعه</span> و یکپارچه‌سازی</h2>
+                <p style="text-align:center; color:#b8d0de; max-width:700px; margin:0.5rem auto 1.5rem;">ابزارها، API و مستندات برای توسعه‌دهندگان حرفه‌ای</p>
+                <div class="dev-stack">
+                    <span><i class="fab fa-react"></i> React</span>
+                    <span><i class="fab fa-vuejs"></i> Vue</span>
+                    <span><i class="fab fa-angular"></i> Angular</span>
+                    <span><i class="fab fa-laravel"></i> Laravel</span>
+                    <span><i class="fab fa-node"></i> Node.js</span>
+                    <span><i class="fas fa-database"></i> MongoDB</span>
+                </div>
+                <div class="grid-2" style="margin-top:1.5rem;">
+                    <div class="card"><div class="icon"><i class="fas fa-code-branch"></i></div><h3>Git Integration</h3><p>اتصال مستقیم به مخازن گیت برای استقرار خودکار</p><span class="badge">رایگان</span></div>
+                    <div class="card"><div class="icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Deploy CLI</h3><p>ابزار خط فرمان برای انتشار سریع قالب‌ها</p><span class="badge">بتا</span></div>
+                    <div class="card"><div class="icon"><i class="fas fa-shield-alt"></i></div><h3>Security API</h3><p>احراز هویت و مجوزهای امن برای API‌ها</p><span class="badge">نسخه ۲.۰</span></div>
+                    <div class="card"><div class="icon"><i class="fas fa-puzzle-piece"></i></div><h3>Plugin System</h3><p>سیستم افزونه‌پذیر برای توسعه ماژول‌های سفارشی</p><span class="badge">مستندات</span></div>
+                </div>
             </div>
-        </section>
 
-        <!-- ===== PAGE: SUPPORT ===== -->
-        <section id="support-page" class="page">
-            <div class="support-content">
-                <i class="fas fa-headset"></i>
-                <h2>پشتیبانی ۲۴/۷</h2>
-                <p>تیم پشتیبانی داریس همیشه آماده پاسخگویی به سوالات و مشکلات شماست. ما در کنار شما هستیم تا بهترین تجربه‌ی خرید و استفاده از قالب‌ها رو داشته باشید.</p>
-                <div class="contact-info">
-                    <div class="item">
-                        <i class="fas fa-phone"></i>
-                        <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+            <!-- پشتیبانی -->
+            <div class="tab-pane" id="support">
+                <h2 style="font-size:2rem; font-weight:800; text-align:center;"><span style="background:linear-gradient(135deg,#00ff88,#ffdd00); -webkit-background-clip:text; background-clip:text; color:transparent;">پشتیبانی</span> ۲۴/۷</h2>
+                <p style="text-align:center; color:#b8d0de; max-width:600px; margin:0.5rem auto 1.5rem;">تیم پشتیبانی داریس همواره در کنار شماست</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                    <div>
+                        <div class="support-item"><i class="fas fa-headset" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>پشتیبانی مستقیم</strong> — پاسخگویی در کمتر از ۲۴ ساعت</div>
+                        <div class="support-item"><i class="fas fa-book-open" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>مستندات کامل</strong> — راهنمای گام‌به‌گام و ویدئوهای آموزشی</div>
+                        <div class="support-item"><i class="fas fa-ticket-alt" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>سیستم تیکت</strong> — پیگیری درخواست‌ها به صورت آنلاین</div>
                     </div>
-                    <div class="item">
-                        <i class="fas fa-envelope"></i>
-                        <span>support@daric.ir</span>
-                    </div>
-                    <div class="item">
-                        <i class="fas fa-telegram"></i>
-                        <span>@DaricSupport</span>
+                    <div>
+                        <div class="support-item"><i class="fas fa-phone-alt" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>پشتیبانی تلفنی</strong> — همه روزه از ۸ صبح تا ۱۲ شب</div>
+                        <div class="support-item"><i class="fas fa-comments" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>گفتگوی زنده</strong> — چت آنلاین با کارشناسان</div>
+                        <div class="support-item"><i class="fas fa-envelope" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>ایمیل</strong> — support@daric.ir</div>
                     </div>
                 </div>
+                <div style="background:rgba(0,255,136,0.05); border-radius:1.5rem; padding:1.5rem; margin-top:1.5rem; text-align:center; border:1px dashed rgba(255,221,0,0.3);">
+                    <i class="fas fa-life-ring" style="font-size:2.5rem; color:#ffdd00;"></i>
+                    <p style="font-size:1.2rem; font-weight:700;">نیاز به کمک دارید؟ ما اینجا هستیم!</p>
+                    <button class="btn-ghost" style="margin-top:0.5rem;"><i class="fas fa-paper-plane"></i> ارسال تیکت</button>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ===== FOOTER ===== -->
+        <!-- فوتر -->
         <footer class="footer">
             <span><i class="far fa-copyright"></i> ۲۰۲۶ · داریس — همه حقوق محفوظ است</span>
             <div class="footer-social">
@@ -656,32 +399,32 @@
         </footer>
     </div>
 
+    <!-- اسکریپت تغییر تب -->
     <script>
-        const navLinks = document.querySelectorAll('.nav a[data-page]');
-        const pages = {
-            home: document.getElementById('home-page'),
-            templates: document.getElementById('templates-page'),
-            dev: document.getElementById('dev-page'),
-            support: document.getElementById('support-page')
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panes = {
+                home: document.getElementById('home'),
+                templates: document.getElementById('templates'),
+                dev: document.getElementById('dev'),
+                support: document.getElementById('support')
+            };
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const pageId = this.dataset.page;
-                if (!pageId) return;
+            tabs.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // غیرفعال کردن همه تب‌ها
+                    tabs.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
 
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
+                    // مخفی کردن همه پنل‌ها
+                    Object.values(panes).forEach(p => p.classList.remove('active'));
 
-                Object.values(pages).forEach(page => {
-                    page.classList.remove('active');
-                });
-
-                setTimeout(() => {
-                    if (pages[pageId]) {
-                        pages[pageId].classList.add('active');
+                    // نمایش پنل مربوطه
+                    const tabId = this.dataset.tab;
+                    if (panes[tabId]) {
+                        panes[tabId].classList.add('active');
                     }
-                }, 50);
+                });
             });
         });
     </script>
