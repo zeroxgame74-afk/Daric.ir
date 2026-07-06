@@ -73,6 +73,11 @@
             0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
             100% { text-shadow: 0 0 20px rgba(255, 221, 0, 0.4); }
         }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
         .tabs-nav {
             display: flex;
             gap: 1.8rem;
@@ -122,6 +127,202 @@
         .tab-btn.active::after {
             width: 100%;
         }
+
+        /* سبد خرید */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #c8dae8;
+            transition: all 0.3s;
+        }
+        .cart-icon:hover {
+            color: #ffdd00;
+            transform: scale(1.1);
+        }
+        .cart-icon .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            background: linear-gradient(135deg, #ff4444, #ff8800);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 0.5s ease;
+        }
+        @keyframes bounce {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* مودال سبد خرید */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .cart-modal.active {
+            display: flex;
+        }
+        .cart-modal-content {
+            background: rgba(18, 26, 34, 0.95);
+            border-radius: 2rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid rgba(255, 221, 0, 0.3);
+            animation: slideUp 0.4s ease-out;
+        }
+        .cart-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 255, 136, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .cart-modal-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .cart-modal-header h2 span {
+            background: linear-gradient(135deg, #00ff88, #ffdd00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .cart-close {
+            background: transparent;
+            border: none;
+            color: #ff4444;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .cart-close:hover {
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .cart-item-info i {
+            font-size: 2rem;
+            color: #ffdd00;
+        }
+        .cart-item-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .cart-item-info p {
+            font-size: 0.85rem;
+            color: #aac2d6;
+        }
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .cart-item-actions button {
+            background: rgba(255, 221, 0, 0.1);
+            border: 1px solid rgba(255, 221, 0, 0.2);
+            color: #ffdd00;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Vazir', sans-serif;
+        }
+        .cart-item-actions button:hover {
+            background: rgba(255, 221, 0, 0.3);
+            transform: scale(1.1);
+        }
+        .cart-item-actions .qty {
+            font-weight: 700;
+            min-width: 30px;
+            text-align: center;
+            color: #fff;
+        }
+        .cart-item-actions .price {
+            font-weight: 700;
+            color: #ffdd00;
+            min-width: 80px;
+            text-align: left;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 0;
+            color: #aac2d6;
+        }
+        .cart-empty i {
+            font-size: 4rem;
+            color: #ffdd00;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-top: 2px solid rgba(255, 221, 0, 0.2);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .cart-total .total-price {
+            color: #ffdd00;
+            font-size: 1.5rem;
+        }
+        .checkout-btn {
+            background: linear-gradient(135deg, #00ff88, #ffdd00);
+            color: #0c0f15;
+            font-weight: 800;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Vazir', sans-serif;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .checkout-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 221, 0, 0.3);
+        }
+
         .tab-content {
             margin-top: 2rem;
         }
@@ -199,9 +400,11 @@
             cursor: pointer;
             font-family: 'Vazir', sans-serif;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
         }
         .btn-ghost i {
-            margin-left: 0.3rem;
             color: #ffdd00;
             transition: transform 0.5s;
         }
@@ -213,120 +416,26 @@
             border-color: #ffdd00;
             transform: scale(1.05);
         }
-        .dev-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 1.5rem 0;
-        }
-        .dev-stack span {
-            background: rgba(0, 255, 136, 0.08);
-            padding: 0.5rem 1.5rem;
+        .btn-add-cart {
+            background: linear-gradient(135deg, #00ff88, #ffdd00);
+            color: #0c0f15;
+            font-weight: 700;
+            padding: 0.4rem 1.5rem;
             border-radius: 60px;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-family: 'Vazir', sans-serif;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
         }
-        .dev-stack span:hover {
+        .btn-add-cart:hover {
             transform: scale(1.05);
-            border-color: #ffdd00;
-            box-shadow: 0 0 20px rgba(255, 221, 0, 0.1);
+            box-shadow: 0 0 30px rgba(255, 221, 0, 0.3);
         }
-        .dev-stack span i {
-            color: #ffdd00;
-            margin-left: 0.3rem;
-        }
-        .support-item {
-            background: rgba(22, 34, 46, 0.5);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            border-right: 4px solid #ffdd00;
-            margin-bottom: 1rem;
-            transition: all 0.3s;
-            text-align: center;
-        }
-        .support-item:hover {
-            transform: translateX(-5px);
-            background: rgba(22, 34, 46, 0.8);
-        }
-        .support-item i {
-            transition: transform 0.5s;
-            font-size: 2rem;
-            color: #ffdd00;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .support-item:hover i {
-            transform: rotate(10deg) scale(1.2);
-        }
-        .support-item .number {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #ffdd00;
-            direction: ltr;
-            display: inline-block;
-        }
-        .footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid rgba(0, 255, 136, 0.1);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            color: #7a96af;
-            font-size: 0.95rem;
-        }
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
-        .footer-social a {
-            color: #b0cada;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .footer-social a i {
-            color: #ffdd00;
-            margin-left: 0.3rem;
-            transition: transform 0.5s;
-        }
-        .footer-social a:hover i {
-            transform: rotate(15deg) scale(1.3);
-        }
-        .footer-social a:hover {
-            color: #ffdd00;
-            transform: translateY(-3px);
-        }
-        @media (max-width: 992px) {
-            .grid-3 {
-                grid-template-columns: 1fr 1fr;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: start;
-                gap: 1rem;
-            }
-            .tabs-nav {
-                gap: 1rem;
-            }
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            .footer {
-                flex-direction: column;
-                align-items: start;
-            }
-            .hero-wrapper {
-                flex-direction: column;
-            }
-        }
+
         .hero-wrapper {
             display: flex;
             align-items: center;
@@ -533,8 +642,94 @@
             color: #ffdd00;
             font-weight: 700;
         }
+        .support-item {
+            background: rgba(22, 34, 46, 0.5);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-right: 4px solid #ffdd00;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .support-item:hover {
+            transform: translateX(-5px);
+            background: rgba(22, 34, 46, 0.8);
+        }
+        .support-item i {
+            transition: transform 0.5s;
+            font-size: 2rem;
+            color: #ffdd00;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .support-item:hover i {
+            transform: rotate(10deg) scale(1.2);
+        }
+        .support-item .number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffdd00;
+            direction: ltr;
+            display: inline-block;
+        }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(0, 255, 136, 0.1);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #7a96af;
+            font-size: 0.95rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-social a {
+            color: #b0cada;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .footer-social a i {
+            color: #ffdd00;
+            margin-left: 0.3rem;
+            transition: transform 0.5s;
+        }
+        .footer-social a:hover i {
+            transform: rotate(15deg) scale(1.3);
+        }
+        .footer-social a:hover {
+            color: #ffdd00;
+            transform: translateY(-3px);
+        }
+        .dev-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .dev-stack span {
+            background: rgba(0, 255, 136, 0.08);
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .dev-stack span:hover {
+            transform: scale(1.05);
+            border-color: #ffdd00;
+            box-shadow: 0 0 20px rgba(255, 221, 0, 0.1);
+        }
+        .dev-stack span i {
+            color: #ffdd00;
+            margin-left: 0.3rem;
+        }
 
-        /* مودال / اورلی */
+        /* مودال قالب رستوران */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -589,8 +784,6 @@
             background: rgba(255, 0, 0, 0.4);
             transform: rotate(90deg) scale(1.1);
         }
-
-        /* استایل قالب رستوران داخل مودال */
         .restaurant-card {
             background: linear-gradient(145deg, #fef3c7 0%, #fde68a 40%, #fca5a5 80%, #f87171 100%);
             border-radius: 48px;
@@ -791,355 +984,4 @@
         }
         .restaurant-card .r-footer .brand-footer {
             font-weight: 700;
-            background: linear-gradient(135deg, #b91c1c, #eab308);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 1.2rem;
-        }
-        .restaurant-card .r-bottom {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #991b1b;
-            opacity: 0.7;
-            border-top: 1px solid #fde68a;
-            padding-top: 0.6rem;
-        }
-        .restaurant-card .r-bottom i {
-            color: #dc2626;
-        }
-
-        @media (max-width: 680px) {
-            .restaurant-card { padding: 1.5rem; }
-            .restaurant-card .r-brand h1 { font-size: 1.8rem; }
-            .restaurant-card .r-icons { gap: 1rem; font-size: 1.3rem; }
-            .restaurant-card .r-image { padding: 1.2rem; }
-            .restaurant-card .r-image i { font-size: 4rem; }
-            .restaurant-card .r-image h2 { font-size: 1.4rem; }
-            .restaurant-card .r-menu { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 460px) {
-            .restaurant-card .r-menu { grid-template-columns: 1fr; }
-            .restaurant-card .r-features { flex-direction: column; align-items: center; }
-            .restaurant-card .r-footer { flex-direction: column; gap: 0.8rem; text-align: center; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- هدر -->
-        <header class="header">
-            <div class="logo">
-                <img src="https://uploadkon.ir/uploads/571e06_26DARIC-IR.png" alt="لوگو" />
-                <span class="logo-text">داریس</span>
-            </div>
-            <nav class="tabs-nav" id="tabsNav">
-                <button class="tab-btn active" data-tab="home"><i class="fas fa-home"></i> خانه</button>
-                <button class="tab-btn" data-tab="templates"><i class="fas fa-layer-group"></i> قالب‌ها</button>
-                <button class="tab-btn" data-tab="dev"><i class="fas fa-code"></i> توسعه</button>
-                <button class="tab-btn" data-tab="support"><i class="fas fa-headset"></i> پشتیبانی</button>
-            </nav>
-        </header>
-
-        <!-- محتوای تب‌ها -->
-        <div class="tab-content">
-
-            <!-- خانه -->
-            <div class="tab-pane active" id="home">
-                <div class="hero-wrapper">
-                    <div class="hero-content">
-                        <h1 class="hero-title"><span>داریس</span>؛ فروش و توسعه قالب سایت</h1>
-                        <p class="hero-desc">پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و بهینه‌شده برای کسب‌وکارهای خلاق.</p>
-                        <div class="cta-group">
-                            <button class="btn-primary"><i class="fas fa-rocket"></i> شروع فروش</button>
-                            <button class="btn-outline"><i class="fas fa-eye"></i> مشاهده دمو</button>
-                        </div>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item"><span class="stat-number">۱۲۰+</span><span class="stat-label">قالب فعال</span></div>
-                        <div class="stat-item"><span class="stat-number">۹۷%</span><span class="stat-label">رضایت مشتری</span></div>
-                        <div class="stat-item"><span class="stat-number">۴.۸⭐</span><span class="stat-label">میانگین امتیاز</span></div>
-                        <div class="stat-item"><span class="stat-number">۸.۵K</span><span class="stat-label">توسعه‌دهنده</span></div>
-                    </div>
-                </div>
-                <div class="grid-3">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3>طراحی مدرن</h3>
-                        <p>قالب‌هایی با هویت بصری منحصربه‌فرد، آماده برای هر نوع برند و استارتاپ.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-code"></i></div>
-                        <h3>کد تمیز</h3>
-                        <p>توسعه‌یافته با بهترین استانداردها، سبک، سریع و کاملاً قابل شخصی‌سازی.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-cart-plus"></i></div>
-                        <h3>فروش آسان</h3>
-                        <p>سیستم پرداخت یکپارچه، پنل کاربری حرفه‌ای و پشتیبانی ۲۴/۷ برای فروشندگان.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- قالب‌ها -->
-            <div class="tab-pane" id="templates">
-                <h2 class="section-title"><span>قالب‌های</span> داریس</h2>
-                <div class="grid-3">
-                    <div class="card" onclick="openModal('restaurant')">
-                        <div class="icon"><i class="fas fa-utensils"></i></div>
-                        <h3>رستوران</h3>
-                        <p>منوی دیجیتال و رزرو</p>
-                        <span class="badge">۹۵۰,۰۰۰ تومان</span><br />
-                        <button class="btn-ghost" onclick="event.stopPropagation(); openModal('restaurant')"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>مدیریتی</h3>
-                        <p>داشبورد حرفه‌ای</p>
-                        <span class="badge">۱,۲۰۰,۰۰۰ تومان</span><br />
-                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><i class="fas fa-store"></i></div>
-                        <h3>فروشگاهی</h3>
-                        <p>فروشگاه اینترنتی کامل</p>
-                        <span class="badge">۹۸۰,۰۰۰ تومان</span><br />
-                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><i class="fas fa-blog"></i></div>
-                        <h3>وبلاگ</h3>
-                        <p>وبلاگ شخصی و خبری</p>
-                        <span class="badge">۶۵۰,۰۰۰ تومان</span><br />
-                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><i class="fas fa-photo-video"></i></div>
-                        <h3>پرتفولیو</h3>
-                        <p>نمایش نمونه‌کارهای هنری</p>
-                        <span class="badge">۷۵۰,۰۰۰ تومان</span><br />
-                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                    </div>
-                    <div class="card">
-                        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3>آموزشی</h3>
-                        <p>مدیریت دوره‌های آنلاین</p>
-                        <span class="badge">۱,۵۰۰,۰۰۰ تومان</span><br />
-                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- توسعه -->
-            <div class="tab-pane" id="dev">
-                <h2 class="section-title"><span>توسعه</span> و یکپارچه‌سازی</h2>
-                <p style="text-align:center; color:#b8d0de; max-width:700px; margin:0.5rem auto 1.5rem;">ابزارها، API و مستندات برای توسعه‌دهندگان حرفه‌ای</p>
-                <div class="dev-stack">
-                    <span><i class="fab fa-react"></i> React</span>
-                    <span><i class="fab fa-vuejs"></i> Vue</span>
-                    <span><i class="fab fa-angular"></i> Angular</span>
-                    <span><i class="fab fa-laravel"></i> Laravel</span>
-                    <span><i class="fab fa-node"></i> Node.js</span>
-                    <span><i class="fas fa-database"></i> MongoDB</span>
-                </div>
-                <div class="grid-2" style="margin-top:1.5rem;">
-                    <div class="card"><div class="icon"><i class="fas fa-code-branch"></i></div><h3>Git Integration</h3><p>اتصال مستقیم به مخازن گیت برای استقرار خودکار</p><span class="badge">رایگان</span></div>
-                    <div class="card"><div class="icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Deploy CLI</h3><p>ابزار خط فرمان برای انتشار سریع قالب‌ها</p><span class="badge">بتا</span></div>
-                    <div class="card"><div class="icon"><i class="fas fa-shield-alt"></i></div><h3>Security API</h3><p>احراز هویت و مجوزهای امن برای API‌ها</p><span class="badge">نسخه ۲.۰</span></div>
-                    <div class="card"><div class="icon"><i class="fas fa-puzzle-piece"></i></div><h3>Plugin System</h3><p>سیستم افزونه‌پذیر برای توسعه ماژول‌های سفارشی</p><span class="badge">مستندات</span></div>
-                </div>
-            </div>
-
-            <!-- پشتیبانی -->
-            <div class="tab-pane" id="support">
-                <h2 class="section-title"><span>پشتیبانی</span> داریس</h2>
-                <div class="support-box">
-                    <div class="support-msg">
-                        <i class="fas fa-headset"></i>
-                        <p><span>مشتری گرامی</span> ممنون که به سایت داریس آمدید.<br>اگر به مشکلی خوردید میتوانید از یکی از اینها اقدام کنید!</p>
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-                        <div class="support-item">
-                            <i class="fas fa-headset"></i>
-                            <h3 style="color:#ffdd00; margin-bottom:0.3rem;">پشتیبانی آنلاین</h3>
-                            <p style="color:#aac2d6;">همیشه آماده پاسخگویی</p>
-                        </div>
-                        <div class="support-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <h3 style="color:#ffdd00; margin-bottom:0.3rem;">تماس تلفنی</h3>
-                            <p style="color:#aac2d6;">با این شماره تماس بگیرید</p>
-                            <span class="number" style="direction:ltr; display:inline-block; margin-top:0.3rem; font-size:1.4rem; color:#ffdd00; font-weight:700;">۰۹۱۵۷۹۳۰۵۱۸</span>
-                        </div>
-                    </div>
-                    <div style="text-align:center; margin-top:2rem;">
-                        <button class="btn-primary" onclick="copyPhone()"><i class="fas fa-copy"></i> کپی شماره تماس</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- فوتر -->
-        <footer class="footer">
-            <span><i class="far fa-copyright"></i> ۲۰۲۶ · داریس — همه حقوق محفوظ است</span>
-            <div class="footer-social">
-                <a><i class="fab fa-twitter"></i> توییتر</a>
-                <a><i class="fab fa-github"></i> گیت‌هاب</a>
-                <a><i class="fab fa-discord"></i> دیسکورد</a>
-            </div>
-        </footer>
-    </div>
-
-    <!-- مودال نمایش قالب رستوران -->
-    <div class="modal-overlay" id="restaurantModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-            
-            <!-- قالب رستوران Maria -->
-            <div class="restaurant-card">
-                <div class="r-header">
-                    <div class="r-brand">
-                        <i class="fas fa-utensils"></i>
-                        <h1>Maria</h1>
-                        <span><i class="fas fa-star" style="color: #ca8a04;"></i> رستوران</span>
-                    </div>
-                    <div class="r-icons">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-shopping-bag"></i>
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                </div>
-
-                <div class="r-hero">
-                    <div class="r-menu">
-                        <div class="r-menu-item">
-                            <i class="fas fa-pizza-slice"></i>
-                            <h3>پیتزا ماریا</h3>
-                            <p>۲۸۰,۰۰۰ تومان</p>
-                        </div>
-                        <div class="r-menu-item">
-                            <i class="fas fa-hamburger"></i>
-                            <h3>برگر مخصوص</h3>
-                            <p>۱۹۵,۰۰۰ تومان</p>
-                        </div>
-                        <div class="r-menu-item">
-                            <i class="fas fa-fish"></i>
-                            <h3>سالمون زعفرانی</h3>
-                            <p>۳۴۰,۰۰۰ تومان</p>
-                        </div>
-                        <div class="r-menu-item">
-                            <i class="fas fa-coffee"></i>
-                            <h3>کافه اسپرسو</h3>
-                            <p>۶۵,۰۰۰ تومان</p>
-                        </div>
-                    </div>
-
-                    <div class="r-image">
-                        <i class="fas fa-utensil-spoon"></i>
-                        <h2>طعم گرم</h2>
-                        <div class="tag"><i class="fas fa-fire" style="color: #dc2626;"></i> سفارش آنلاین</div>
-                    </div>
-                </div>
-
-                <div class="r-features">
-                    <div class="rf-item"><i class="fas fa-truck"></i> تحویل رایگان</div>
-                    <div class="rf-item"><i class="fas fa-clock"></i> ۲۴ ساعته</div>
-                    <div class="rf-item"><i class="fas fa-gift"></i> هدیه ویژه</div>
-                    <div class="rf-item"><i class="fas fa-credit-card"></i> پرداخت ایمن</div>
-                </div>
-
-                <div class="r-footer">
-                    <div class="copy">
-                        <i class="fas fa-copyright"></i> ۲۰۲۶ · قالب آماده‌ی سایت 
-                        <span class="brand-footer">DARIC</span>
-                    </div>
-                    <div class="social">
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-telegram"></i>
-                        <i class="fab fa-whatsapp"></i>
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div style="font-size: 0.9rem; background: #fef3c7; padding: 0.2rem 1rem; border-radius: 60px;">
-                        <i class="fas fa-phone-alt" style="color: #b91c1c;"></i> ۰۲۱-۱۲۳۴۵۶۷۸
-                    </div>
-                </div>
-
-                <div class="r-bottom">
-                    <i class="fas fa-heart"></i> Maria | قالب آماده ی سایت DARIC <i class="fas fa-heart"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // تغییر تب
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab-btn');
-            const panes = {
-                home: document.getElementById('home'),
-                templates: document.getElementById('templates'),
-                dev: document.getElementById('dev'),
-                support: document.getElementById('support')
-            };
-
-            tabs.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    tabs.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    Object.values(panes).forEach(p => p.classList.remove('active'));
-
-                    const tabId = this.dataset.tab;
-                    if (panes[tabId]) {
-                        panes[tabId].classList.add('active');
-                    }
-                });
-            });
-        });
-
-        // مودال
-        function openModal(type) {
-            if (type === 'restaurant') {
-                document.getElementById('restaurantModal').classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('restaurantModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // بستن مودال با کلیک روی پس‌زمینه
-        document.getElementById('restaurantModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // بستن با کلید ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // کپی شماره تلفن
-        function copyPhone() {
-            const phone = "09157930518";
-            navigator.clipboard.writeText(phone).then(() => {
-                alert('✅ شماره ' + phone + ' کپی شد!');
-            }).catch(() => {
-                const textArea = document.createElement('textarea');
-                textArea.value = phone;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                alert('✅ شماره ' + phone + ' کپی شد!');
-            });
-        }
-    </script>
-</body>
-    </html>
+            background: linear-gradient(135deg, #b
