@@ -37,7 +37,6 @@
             padding: 2rem;
             border: 1px solid rgba(0, 255, 136, 0.15);
         }
-        /* هدر */
         .header {
             display: flex;
             justify-content: space-between;
@@ -74,7 +73,6 @@
             0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
             100% { text-shadow: 0 0 20px rgba(255, 221, 0, 0.4); }
         }
-        /* ناوبری تب */
         .tabs-nav {
             display: flex;
             gap: 1.8rem;
@@ -124,8 +122,6 @@
         .tab-btn.active::after {
             width: 100%;
         }
-
-        /* محتوای تب‌ها */
         .tab-content {
             margin-top: 2rem;
         }
@@ -140,8 +136,6 @@
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-
-        /* کارت‌ها و گریدها */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -218,8 +212,6 @@
             border-color: #ffdd00;
             transform: scale(1.05);
         }
-
-        /* بخش توسعه (تب) */
         .dev-stack {
             display: flex;
             flex-wrap: wrap;
@@ -244,8 +236,6 @@
             color: #ffdd00;
             margin-left: 0.3rem;
         }
-
-        /* پشتیبانی (تب) */
         .support-item {
             background: rgba(22, 34, 46, 0.5);
             border-radius: 1rem;
@@ -253,6 +243,7 @@
             border-right: 4px solid #ffdd00;
             margin-bottom: 1rem;
             transition: all 0.3s;
+            text-align: center;
         }
         .support-item:hover {
             transform: translateX(-5px);
@@ -260,12 +251,21 @@
         }
         .support-item i {
             transition: transform 0.5s;
+            font-size: 2rem;
+            color: #ffdd00;
+            display: block;
+            margin-bottom: 0.5rem;
         }
         .support-item:hover i {
             transform: rotate(10deg) scale(1.2);
         }
-
-        /* فوتر */
+        .support-item .number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffdd00;
+            direction: ltr;
+            display: inline-block;
+        }
         .footer {
             margin-top: 3rem;
             padding-top: 1.5rem;
@@ -298,8 +298,6 @@
             color: #ffdd00;
             transform: translateY(-3px);
         }
-
-        /* ریسپانسیو */
         @media (max-width: 992px) {
             .grid-3 {
                 grid-template-columns: 1fr 1fr;
@@ -328,8 +326,6 @@
                 flex-direction: column;
             }
         }
-
-        /* کلاس‌های مخصوص خانه */
         .hero-wrapper {
             display: flex;
             align-items: center;
@@ -406,7 +402,6 @@
             color: #aac2d6;
             font-size: 0.95rem;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, #00ff88, #ffdd00);
             color: #0c0f15;
@@ -456,7 +451,6 @@
             transform: translateY(-3px);
             box-shadow: 0 0 30px rgba(255, 221, 0, 0.2);
         }
-
         .section-title {
             font-size: 2.2rem;
             font-weight: 800;
@@ -474,7 +468,6 @@
             background-clip: text;
             color: transparent;
         }
-
         .feature-card {
             background: rgba(22, 34, 46, 0.6);
             border: 1px solid rgba(0, 255, 136, 0.1);
@@ -512,6 +505,33 @@
             color: #aac2d6;
             font-size: 0.95rem;
         }
+        .support-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .support-msg {
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 221, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+        .support-msg i {
+            color: #ffdd00;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .support-msg p {
+            font-size: 1.1rem;
+            color: #b8d0de;
+            line-height: 1.8;
+        }
+        .support-msg p span {
+            color: #ffdd00;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -533,7 +553,7 @@
         <!-- محتوای تب‌ها -->
         <div class="tab-content">
 
-            <!-- خانه (وسط‌چین شده) -->
+            <!-- خانه -->
             <div class="tab-pane active" id="home">
                 <div class="hero-wrapper">
                     <div class="hero-content">
@@ -606,28 +626,44 @@
                 </div>
             </div>
 
-            <!-- پشتیبانی -->
+            <!-- پشتیبانی (طبق خواسته شما) -->
             <div class="tab-pane" id="support">
-                <h2 class="section-title"><span>پشتیبانی</span> ۲۴/۷</h2>
-                <p style="text-align:center; color:#b8d0de; max-width:600px; margin:0.5rem auto 1.5rem;">تیم پشتیبانی داریس همواره در کنار شماست</p>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-                    <div>
-                        <div class="support-item"><i class="fas fa-headset" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>پشتیبانی مستقیم</strong> — پاسخگویی در کمتر از ۲۴ ساعت</div>
-                        <div class="support-item"><i class="fas fa-book-open" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>مستندات کامل</strong> — راهنمای گام‌به‌گام و ویدئوهای آموزشی</div>
-                        <div class="support-item"><i class="fas fa-ticket-alt" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>سیستم تیکت</strong> — پیگیری درخواست‌ها به صورت آنلاین</div>
+                <h2 class="section-title"><span>پشتیبانی</span> داریس</h2>
+                
+                <div class="support-box">
+                    <!-- پیام خوش‌آمدگویی -->
+                    <div class="support-msg">
+                        <i class="fas fa-headset"></i>
+                        <p>
+                            <span>مشتری گرامی</span> ممنون که به سایت داریس آمدید.<br>
+                            اگر به مشکلی خوردید میتوانید از یکی از اینها اقدام کنید!
+                        </p>
                     </div>
-                    <div>
-                        <div class="support-item"><i class="fas fa-phone-alt" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>پشتیبانی تلفنی</strong> — همه روزه از ۸ صبح تا ۱۲ شب</div>
-                        <div class="support-item"><i class="fas fa-comments" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>گفتگوی زنده</strong> — چت آنلاین با کارشناسان</div>
-                        <div class="support-item"><i class="fas fa-envelope" style="color:#ffdd00; font-size:1.5rem; margin-left:0.5rem;"></i> <strong>ایمیل</strong> — support@daric.ir</div>
+
+                    <!-- گزینه‌های پشتیبانی -->
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                        <div class="support-item">
+                            <i class="fas fa-headset"></i>
+                            <h3 style="color:#ffdd00; margin-bottom:0.3rem;">پشتیبانی آنلاین</h3>
+                            <p style="color:#aac2d6;">همیشه آماده پاسخگویی</p>
+                        </div>
+                        <div class="support-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3 style="color:#ffdd00; margin-bottom:0.3rem;">تماس تلفنی</h3>
+                            <p style="color:#aac2d6;">با این شماره تماس بگیرید</p>
+                            <span class="number" style="direction:ltr; display:inline-block; margin-top:0.3rem; font-size:1.4rem; color:#ffdd00; font-weight:700;">۰۹۱۵۷۹۳۰۵۱۸</span>
+                        </div>
                     </div>
-                </div>
-                <div style="background:rgba(0,255,136,0.05); border-radius:1.5rem; padding:1.5rem; margin-top:1.5rem; text-align:center; border:1px dashed rgba(255,221,0,0.3);">
-                    <i class="fas fa-life-ring" style="font-size:2.5rem; color:#ffdd00; transition:transform 0.5s; display:inline-block;"></i>
-                    <p style="font-size:1.2rem; font-weight:700;">نیاز به کمک دارید؟ ما اینجا هستیم!</p>
-                    <button class="btn-ghost" style="margin-top:0.5rem;"><i class="fas fa-paper-plane"></i> ارسال تیکت</button>
+
+                    <!-- دکمه تماس (کپی شماره) -->
+                    <div style="text-align:center; margin-top:2rem;">
+                        <button class="btn-primary" onclick="copyPhone()">
+                            <i class="fas fa-copy"></i> کپی شماره تماس
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
 
         <!-- فوتر -->
@@ -641,8 +677,8 @@
         </footer>
     </div>
 
-    <!-- اسکریپت تغییر تب -->
     <script>
+        // تغییر تب
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab-btn');
             const panes = {
@@ -666,6 +702,23 @@
                 });
             });
         });
+
+        // کپی شماره تلفن
+        function copyPhone() {
+            const phone = "09157930518";
+            navigator.clipboard.writeText(phone).then(() => {
+                alert('✅ شماره ' + phone + ' کپی شد!');
+            }).catch(() => {
+                // روش جایگزین برای مرورگرهای قدیمی
+                const textArea = document.createElement('textarea');
+                textArea.value = phone;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('✅ شماره ' + phone + ' کپی شد!');
+            });
+        }
     </script>
 </body>
 </html>
