@@ -729,7 +729,7 @@
             margin-left: 0.3rem;
         }
 
-        /* مودال قالب رستوران */
+        /* مودال نمایش قالب (داخل خود داریس) */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -737,36 +737,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
             z-index: 999;
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            animation: modalFade 0.5s ease-out;
+            animation: modalFade 0.4s ease-out;
         }
         .modal-overlay.active {
             display: flex;
         }
         @keyframes modalFade {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         .modal-content {
             max-width: 1100px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            background: rgba(18, 26, 34, 0.95);
+            background: transparent;
             border-radius: 2rem;
-            padding: 2rem;
-            border: 2px solid rgba(255, 221, 0, 0.3);
             position: relative;
         }
         .modal-close {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
+            position: sticky;
+            top: 0;
+            left: 100%;
             background: rgba(255, 0, 0, 0.2);
             border: 2px solid #ff4444;
             color: #ff4444;
@@ -779,18 +777,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 10;
+            margin-bottom: 1rem;
+            float: left;
         }
         .modal-close:hover {
             background: rgba(255, 0, 0, 0.4);
             transform: rotate(90deg) scale(1.1);
         }
-        .restaurant-card {
+
+        /* استایل قالب رستوران - کاملاً شبیه خودش */
+        .template-preview {
             background: linear-gradient(145deg, #fef3c7 0%, #fde68a 40%, #fca5a5 80%, #f87171 100%);
             border-radius: 48px;
             padding: 2rem 2.2rem;
             border: 1px solid rgba(255, 215, 100, 0.4);
+            clear: both;
         }
-        .restaurant-card .r-header {
+        .template-preview .tp-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -799,17 +803,17 @@
             padding-bottom: 0.75rem;
             margin-bottom: 2rem;
         }
-        .restaurant-card .r-brand {
+        .template-preview .tp-brand {
             display: flex;
             align-items: center;
             gap: 0.6rem;
         }
-        .restaurant-card .r-brand i {
+        .template-preview .tp-brand i {
             font-size: 2.6rem;
             color: #b91c1c;
             filter: drop-shadow(0 4px 8px rgba(200, 50, 0, 0.3));
         }
-        .restaurant-card .r-brand h1 {
+        .template-preview .tp-brand h1 {
             font-size: 2.2rem;
             font-weight: 800;
             background: linear-gradient(135deg, #b91c1c, #f59e0b);
@@ -817,7 +821,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .restaurant-card .r-brand span {
+        .template-preview .tp-brand span {
             font-size: 1rem;
             background: #fef08a;
             padding: 0.2rem 0.9rem;
@@ -826,21 +830,21 @@
             font-weight: 600;
             border: 1px solid #facc15;
         }
-        .restaurant-card .r-icons {
+        .template-preview .tp-icons {
             display: flex;
             gap: 1.5rem;
             font-size: 1.5rem;
             color: #7f1d1d;
         }
-        .restaurant-card .r-icons i {
+        .template-preview .tp-icons i {
             transition: 0.2s;
             cursor: default;
         }
-        .restaurant-card .r-icons i:hover {
+        .template-preview .tp-icons i:hover {
             transform: scale(1.15);
             color: #b45309;
         }
-        .restaurant-card .r-hero {
+        .template-preview .tp-hero {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
@@ -848,13 +852,13 @@
             justify-content: center;
             margin-bottom: 2rem;
         }
-        .restaurant-card .r-menu {
+        .template-preview .tp-menu {
             flex: 2 1 300px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1.2rem;
         }
-        .restaurant-card .r-menu-item {
+        .template-preview .tp-menu-item {
             background: rgba(255, 255, 240, 0.6);
             backdrop-filter: blur(4px);
             border-radius: 28px;
@@ -864,25 +868,25 @@
             border: 1px solid rgba(255, 200, 60, 0.5);
             transition: 0.25s;
         }
-        .restaurant-card .r-menu-item:hover {
+        .template-preview .tp-menu-item:hover {
             transform: translateY(-8px);
             background: rgba(255, 245, 200, 0.8);
             border-color: #f59e0b;
             box-shadow: 0 20px 30px -8px #b45309;
         }
-        .restaurant-card .r-menu-item i {
+        .template-preview .tp-menu-item i {
             font-size: 2.8rem;
             color: #b91c1c;
             margin-bottom: 0.4rem;
             display: block;
         }
-        .restaurant-card .r-menu-item h3 {
+        .template-preview .tp-menu-item h3 {
             font-size: 1.1rem;
             font-weight: 700;
             color: #7f1d1d;
             margin-bottom: 0.2rem;
         }
-        .restaurant-card .r-menu-item p {
+        .template-preview .tp-menu-item p {
             font-size: 0.85rem;
             color: #92400e;
             background: #fde68a;
@@ -891,7 +895,7 @@
             border-radius: 50px;
             font-weight: 600;
         }
-        .restaurant-card .r-image {
+        .template-preview .tp-image {
             flex: 1 1 220px;
             display: flex;
             flex-direction: column;
@@ -902,19 +906,19 @@
             padding: 1.8rem 1.5rem;
             box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.3), 0 20px 30px -10px #b45309;
         }
-        .restaurant-card .r-image i {
+        .template-preview .tp-image i {
             font-size: 5.5rem;
             color: #fff5d6;
             filter: drop-shadow(0 8px 12px #7f1d1d);
             margin-bottom: 0.5rem;
         }
-        .restaurant-card .r-image h2 {
+        .template-preview .tp-image h2 {
             font-size: 1.8rem;
             font-weight: 800;
             color: #fff7e6;
             text-shadow: 0 4px 12px rgba(150, 30, 0, 0.5);
         }
-        .restaurant-card .r-image .tag {
+        .template-preview .tp-image .tag {
             background: #fef08a;
             color: #991b1b;
             font-weight: 700;
@@ -924,7 +928,7 @@
             margin-top: 0.5rem;
             border: 1px solid #facc15;
         }
-        .restaurant-card .r-features {
+        .template-preview .tp-features {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
@@ -935,7 +939,7 @@
             margin: 2rem 0 1.5rem 0;
             border: 1px solid #fcd34d;
         }
-        .restaurant-card .r-features .rf-item {
+        .template-preview .tp-features .tpf-item {
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -943,11 +947,11 @@
             font-weight: 600;
             font-size: 1rem;
         }
-        .restaurant-card .r-features .rf-item i {
+        .template-preview .tp-features .tpf-item i {
             font-size: 1.6rem;
             color: #b91c1c;
         }
-        .restaurant-card .r-footer {
+        .template-preview .tp-footer {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -957,31 +961,539 @@
             margin-top: 0.5rem;
             color: #7f1d1d;
         }
-        .restaurant-card .r-footer .copy {
+        .template-preview .tp-footer .copy {
             font-size: 0.95rem;
             background: rgba(254, 240, 138, 0.3);
             padding: 0.3rem 1.2rem;
             border-radius: 60px;
             font-weight: 500;
         }
-        .restaurant-card .r-footer .copy i {
+        .template-preview .tp-footer .copy i {
             color: #b91c1c;
             margin-left: 0.4rem;
         }
-        .restaurant-card .r-footer .social {
+        .template-preview .tp-footer .social {
             display: flex;
             gap: 1.2rem;
             font-size: 1.6rem;
         }
-        .restaurant-card .r-footer .social i {
+        .template-preview .tp-footer .social i {
             transition: 0.2s;
             cursor: default;
             color: #7f1d1d;
         }
-        .restaurant-card .r-footer .social i:hover {
+        .template-preview .tp-footer .social i:hover {
             transform: scale(1.2);
             color: #b45309;
         }
-        .restaurant-card .r-footer .brand-footer {
+        .template-preview .tp-footer .brand-footer {
             font-weight: 700;
-            background: linear-gradient(135deg, #b
+            background: linear-gradient(135deg, #b91c1c, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.2rem;
+        }
+        .template-preview .tp-bottom {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #991b1b;
+            opacity: 0.7;
+            border-top: 1px solid #fde68a;
+            padding-top: 0.6rem;
+        }
+        .template-preview .tp-bottom i {
+            color: #dc2626;
+        }
+
+        @media (max-width: 680px) {
+            .template-preview { padding: 1.5rem; }
+            .template-preview .tp-brand h1 { font-size: 1.8rem; }
+            .template-preview .tp-icons { gap: 1rem; font-size: 1.3rem; }
+            .template-preview .tp-image { padding: 1.2rem; }
+            .template-preview .tp-image i { font-size: 4rem; }
+            .template-preview .tp-image h2 { font-size: 1.4rem; }
+            .template-preview .tp-menu { grid-template-columns: 1fr 1fr; }
+            .modal-close { width: 40px; height: 40px; font-size: 1.2rem; left: 90%; }
+        }
+        @media (max-width: 460px) {
+            .template-preview .tp-menu { grid-template-columns: 1fr; }
+            .template-preview .tp-features { flex-direction: column; align-items: center; }
+            .template-preview .tp-footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+            .modal-close { left: 85%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- هدر -->
+        <header class="header">
+            <div class="logo">
+                <img src="https://uploadkon.ir/uploads/571e06_26DARIC-IR.png" alt="لوگو" />
+                <span class="logo-text">داریس</span>
+            </div>
+            <div class="header-left">
+                <nav class="tabs-nav" id="tabsNav">
+                    <button class="tab-btn active" data-tab="home"><i class="fas fa-home"></i> خانه</button>
+                    <button class="tab-btn" data-tab="templates"><i class="fas fa-layer-group"></i> قالب‌ها</button>
+                    <button class="tab-btn" data-tab="dev"><i class="fas fa-code"></i> توسعه</button>
+                    <button class="tab-btn" data-tab="support"><i class="fas fa-headset"></i> پشتیبانی</button>
+                </nav>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- محتوای تب‌ها -->
+        <div class="tab-content">
+
+            <!-- خانه -->
+            <div class="tab-pane active" id="home">
+                <div class="hero-wrapper">
+                    <div class="hero-content">
+                        <h1 class="hero-title"><span>داریس</span>؛ فروش و توسعه قالب سایت</h1>
+                        <p class="hero-desc">پلتفرم تخصصی برای طراحان و توسعه‌دهندگان. قالب‌های مدرن، ریسپانسیو و بهینه‌شده برای کسب‌وکارهای خلاق.</p>
+                        <div class="cta-group">
+                            <button class="btn-primary"><i class="fas fa-rocket"></i> شروع فروش</button>
+                            <button class="btn-outline"><i class="fas fa-eye"></i> مشاهده دمو</button>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item"><span class="stat-number">۱۲۰+</span><span class="stat-label">قالب فعال</span></div>
+                        <div class="stat-item"><span class="stat-number">۹۷%</span><span class="stat-label">رضایت مشتری</span></div>
+                        <div class="stat-item"><span class="stat-number">۴.۸⭐</span><span class="stat-label">میانگین امتیاز</span></div>
+                        <div class="stat-item"><span class="stat-number">۸.۵K</span><span class="stat-label">توسعه‌دهنده</span></div>
+                    </div>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>طراحی مدرن</h3>
+                        <p>قالب‌هایی با هویت بصری منحصربه‌فرد، آماده برای هر نوع برند و استارتاپ.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-code"></i></div>
+                        <h3>کد تمیز</h3>
+                        <p>توسعه‌یافته با بهترین استانداردها، سبک، سریع و کاملاً قابل شخصی‌سازی.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-cart-plus"></i></div>
+                        <h3>فروش آسان</h3>
+                        <p>سیستم پرداخت یکپارچه، پنل کاربری حرفه‌ای و پشتیبانی ۲۴/۷ برای فروشندگان.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قالب‌ها -->
+            <div class="tab-pane" id="templates">
+                <h2 class="section-title"><span>قالب‌های</span> داریس</h2>
+                <div class="grid-3">
+                    <div class="card" onclick="openTemplate('restaurant')">
+                        <div class="icon"><i class="fas fa-utensils"></i></div>
+                        <h3>رستوران</h3>
+                        <p>منوی دیجیتال و رزرو</p>
+                        <span class="badge">۹۵۰,۰۰۰ تومان</span><br />
+                        <button class="btn-ghost" onclick="event.stopPropagation(); openTemplate('restaurant')"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+                        <button class="btn-add-cart" onclick="event.stopPropagation(); addToCart('قالب رستوران', 950000)"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    </div>
+                    <div class="card">
+                        <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>مدیریتی</h3>
+                        <p>داشبورد حرفه‌ای</p>
+                        <span class="badge">۱,۲۰۰,۰۰۰ تومان</span><br />
+                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+                        <button class="btn-add-cart" onclick="addToCart('قالب مدیریتی', 1200000)"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    </div>
+                    <div class="card">
+                        <div class="icon"><i class="fas fa-store"></i></div>
+                        <h3>فروشگاهی</h3>
+                        <p>فروشگاه اینترنتی کامل</p>
+                        <span class="badge">۹۸۰,۰۰۰ تومان</span><br />
+                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+                        <button class="btn-add-cart" onclick="addToCart('قالب فروشگاهی', 980000)"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    </div>
+                    <div class="card">
+                        <div class="icon"><i class="fas fa-blog"></i></div>
+                        <h3>وبلاگ</h3>
+                        <p>وبلاگ شخصی و خبری</p>
+                        <span class="badge">۶۵۰,۰۰۰ تومان</span><br />
+                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+                        <button class="btn-add-cart" onclick="addToCart('قالب وبلاگ', 650000)"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    </div>
+                    <div class="card">
+                        <div class="icon"><i class="fas fa-photo-video"></i></div>
+                        <h3>پرتفولیو</h3>
+                        <p>نمایش نمونه‌کارهای هنری</p>
+                        <span class="badge">۷۵۰,۰۰۰ تومان</span><br />
+                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+                        <button class="btn-add-cart" onclick="addToCart('قالب پرتفولیو', 750000)"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    </div>
+                    <div class="card">
+                        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>آموزشی</h3>
+                        <p>مدیریت دوره‌های آنلاین</p>
+                        <span class="badge">۱,۵۰۰,۰۰۰ تومان</span><br />
+                        <button class="btn-ghost"><i class="fas fa-eye"></i> پیش‌نمایش</button>
+                        <button class="btn-add-cart" onclick="addToCart('قالب آموزشی', 1500000)"><i class="fas fa-cart-plus"></i> افزودن به سبد</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- توسعه -->
+            <div class="tab-pane" id="dev">
+                <h2 class="section-title"><span>توسعه</span> و یکپارچه‌سازی</h2>
+                <p style="text-align:center; color:#b8d0de; max-width:700px; margin:0.5rem auto 1.5rem;">ابزارها، API و مستندات برای توسعه‌دهندگان حرفه‌ای</p>
+                <div class="dev-stack">
+                    <span><i class="fab fa-react"></i> React</span>
+                    <span><i class="fab fa-vuejs"></i> Vue</span>
+                    <span><i class="fab fa-angular"></i> Angular</span>
+                    <span><i class="fab fa-laravel"></i> Laravel</span>
+                    <span><i class="fab fa-node"></i> Node.js</span>
+                    <span><i class="fas fa-database"></i> MongoDB</span>
+                </div>
+                <div class="grid-2" style="margin-top:1.5rem;">
+                    <div class="card"><div class="icon"><i class="fas fa-code-branch"></i></div><h3>Git Integration</h3><p>اتصال مستقیم به مخازن گیت برای استقرار خودکار</p><span class="badge">رایگان</span></div>
+                    <div class="card"><div class="icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Deploy CLI</h3><p>ابزار خط فرمان برای انتشار سریع قالب‌ها</p><span class="badge">بتا</span></div>
+                    <div class="card"><div class="icon"><i class="fas fa-shield-alt"></i></div><h3>Security API</h3><p>احراز هویت و مجوزهای امن برای API‌ها</p><span class="badge">نسخه ۲.۰</span></div>
+                    <div class="card"><div class="icon"><i class="fas fa-puzzle-piece"></i></div><h3>Plugin System</h3><p>سیستم افزونه‌پذیر برای توسعه ماژول‌های سفارشی</p><span class="badge">مستندات</span></div>
+                </div>
+            </div>
+
+            <!-- پشتیبانی -->
+            <div class="tab-pane" id="support">
+                <h2 class="section-title"><span>پشتیبانی</span> داریس</h2>
+                <div class="support-box">
+                    <div class="support-msg">
+                        <i class="fas fa-headset"></i>
+                        <p><span>مشتری گرامی</span> ممنون که به سایت داریس آمدید.<br>اگر به مشکلی خوردید میتوانید از یکی از اینها اقدام کنید!</p>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                        <div class="support-item">
+                            <i class="fas fa-headset"></i>
+                            <h3 style="color:#ffdd00; margin-bottom:0.3rem;">پشتیبانی آنلاین</h3>
+                            <p style="color:#aac2d6;">همیشه آماده پاسخگویی</p>
+                        </div>
+                        <div class="support-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3 style="color:#ffdd00; margin-bottom:0.3rem;">تماس تلفنی</h3>
+                            <p style="color:#aac2d6;">با این شماره تماس بگیرید</p>
+                            <span class="number" style="direction:ltr; display:inline-block; margin-top:0.3rem; font-size:1.4rem; color:#ffdd00; font-weight:700;">۰۹۱۵۷۹۳۰۵۱۸</span>
+                        </div>
+                    </div>
+                    <div style="text-align:center; margin-top:2rem;">
+                        <button class="btn-primary" onclick="copyPhone()"><i class="fas fa-copy"></i> کپی شماره تماس</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- فوتر -->
+        <footer class="footer">
+            <span><i class="far fa-copyright"></i> ۲۰۲۶ · داریس — همه حقوق محفوظ است</span>
+            <div class="footer-social">
+                <a><i class="fab fa-twitter"></i> توییتر</a>
+                <a><i class="fab fa-github"></i> گیت‌هاب</a>
+                <a><i class="fab fa-discord"></i> دیسکورد</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- مودال سبد خرید -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2><span>سبد</span> خرید</h2>
+                <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="cartItems">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>سبد خرید شما خالی است!</p>
+                </div>
+            </div>
+            <div id="cartTotal" style="display:none;">
+                <div class="cart-total">
+                    <span>مجموع:</span>
+                    <span class="total-price" id="totalPrice">۰ تومان</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()"><i class="fas fa-credit-card"></i> پرداخت و تکمیل خرید</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال نمایش قالب (داخل خود داریس) -->
+    <div class="modal-overlay" id="templateModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTemplate()"><i class="fas fa-times"></i></button>
+            
+            <!-- قالب رستوران Maria -->
+            <div class="template-preview" id="restaurantTemplate">
+                <div class="tp-header">
+                    <div class="tp-brand">
+                        <i class="fas fa-utensils"></i>
+                        <h1>Maria</h1>
+                        <span><i class="fas fa-star" style="color: #ca8a04;"></i> رستوران</span>
+                    </div>
+                    <div class="tp-icons">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-shopping-bag"></i>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+
+                <div class="tp-hero">
+                    <div class="tp-menu">
+                        <div class="tp-menu-item">
+                            <i class="fas fa-pizza-slice"></i>
+                            <h3>پیتزا ماریا</h3>
+                            <p>۲۸۰,۰۰۰ تومان</p>
+                        </div>
+                        <div class="tp-menu-item">
+                            <i class="fas fa-hamburger"></i>
+                            <h3>برگر مخصوص</h3>
+                            <p>۱۹۵,۰۰۰ تومان</p>
+                        </div>
+                        <div class="tp-menu-item">
+                            <i class="fas fa-fish"></i>
+                            <h3>سالمون زعفرانی</h3>
+                            <p>۳۴۰,۰۰۰ تومان</p>
+                        </div>
+                        <div class="tp-menu-item">
+                            <i class="fas fa-coffee"></i>
+                            <h3>کافه اسپرسو</h3>
+                            <p>۶۵,۰۰۰ تومان</p>
+                        </div>
+                    </div>
+
+                    <div class="tp-image">
+                        <i class="fas fa-utensil-spoon"></i>
+                        <h2>طعم گرم</h2>
+                        <div class="tag"><i class="fas fa-fire" style="color: #dc2626;"></i> سفارش آنلاین</div>
+                    </div>
+                </div>
+
+                <div class="tp-features">
+                    <div class="tpf-item"><i class="fas fa-truck"></i> تحویل رایگان</div>
+                    <div class="tpf-item"><i class="fas fa-clock"></i> ۲۴ ساعته</div>
+                    <div class="tpf-item"><i class="fas fa-gift"></i> هدیه ویژه</div>
+                    <div class="tpf-item"><i class="fas fa-credit-card"></i> پرداخت ایمن</div>
+                </div>
+
+                <div class="tp-footer">
+                    <div class="copy">
+                        <i class="fas fa-copyright"></i> ۲۰۲۶ · قالب آماده‌ی سایت 
+                        <span class="brand-footer">DARIC</span>
+                    </div>
+                    <div class="social">
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-telegram"></i>
+                        <i class="fab fa-whatsapp"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div style="font-size: 0.9rem; background: #fef3c7; padding: 0.2rem 1rem; border-radius: 60px;">
+                        <i class="fas fa-phone-alt" style="color: #b91c1c;"></i> ۰۲۱-۱۲۳۴۵۶۷۸
+                    </div>
+                </div>
+
+                <div class="tp-bottom">
+                    <i class="fas fa-heart"></i> Maria | قالب آماده ی سایت DARIC <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== سبد خرید ==========
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCart();
+            showNotification('✅ ' + name + ' به سبد خرید اضافه شد!');
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCart();
+        }
+
+        function changeQty(name, delta) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        function updateCart() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').textContent = count;
+
+            const container = document.getElementById('cartItems');
+            const totalContainer = document.getElementById('cartTotal');
+            const totalPriceEl = document.getElementById('totalPrice');
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>سبد خرید شما خالی است!</p></div>`;
+                totalContainer.style.display = 'none';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <i class="fas fa-cube"></i>
+                            <div>
+                                <h4>${item.name}</h4>
+                                <p>${item.price.toLocaleString()} تومان</p>
+                            </div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button onclick="changeQty('${item.name}', -1)">−</button>
+                            <span class="qty">${item.qty}</span>
+                            <button onclick="changeQty('${item.name}', 1)">+</button>
+                            <span class="price">${(item.price * item.qty).toLocaleString()} تومان</span>
+                            <button onclick="removeFromCart('${item.name}')" style="background:rgba(255,0,0,0.1);border-color:#ff4444;color:#ff4444;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalPriceEl.textContent = total.toLocaleString() + ' تومان';
+            totalContainer.style.display = 'block';
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('سبد خرید خالی است!');
+                return;
+            }
+            alert('✅ سفارش شما با موفقیت ثبت شد!\nمجموع: ' + 
+                cart.reduce((sum, i) => sum + (i.price * i.qty), 0).toLocaleString() + ' تومان');
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        function showNotification(msg) {
+            const notif = document.createElement('div');
+            notif.style.cssText = `
+                position: fixed; bottom: 20px; right: 20px;
+                background: linear-gradient(135deg, #00ff88, #ffdd00);
+                color: #0c0f15; padding: 1rem 2rem;
+                border-radius: 60px; font-weight: 700;
+                font-family: 'Vazir', sans-serif;
+                z-index: 99999;
+                animation: slideUp 0.5s ease-out;
+                box-shadow: 0 10px 40px rgba(255,221,0,0.3);
+                direction: rtl;
+            `;
+            notif.textContent = msg;
+            document.body.appendChild(notif);
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                notif.style.transition = 'opacity 0.5s';
+                setTimeout(() => notif.remove(), 500);
+            }, 3000);
+        }
+
+        // ========== مودال قالب ==========
+        function openTemplate(type) {
+            if (type === 'restaurant') {
+                document.getElementById('templateModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeTemplate() {
+            document.getElementById('templateModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('templateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTemplate();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTemplate();
+                if (document.getElementById('cartModal').classList.contains('active')) {
+                    toggleCart();
+                }
+            }
+        });
+
+        // ========== کپی شماره ==========
+        function copyPhone() {
+            const phone = "09157930518";
+            navigator.clipboard.writeText(phone).then(() => {
+                alert('✅ شماره ' + phone + ' کپی شد!');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = phone;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('✅ شماره ' + phone + ' کپی شد!');
+            });
+        }
+
+        // ========== تغییر تب ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panes = {
+                home: document.getElementById('home'),
+                templates: document.getElementById('templates'),
+                dev: document.getElementById('dev'),
+                support: document.getElementById('support')
+            };
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabs.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    Object.values(panes).forEach(p => p.classList.remove('active'));
+
+                    const tabId = this.dataset.tab;
+                    if (panes[tabId]) {
+                        panes[tabId].classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+    </html>
